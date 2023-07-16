@@ -1,0 +1,40 @@
+{
+    "workoutId": 12345,
+    "name": "Chest & Triceps",
+    "date": "time & date",
+    "exercises": [
+        {
+            "name": "Bench Press",
+            "exerciseId": "BP1",
+            "vol": 1760,
+            "perceivedEffort": 60,
+            "sets": [
+                {"id": 1, "weight": 50, "repetitions": 12},
+                {"id": 2, "weight": 60, "repetitions": 10},
+                {"id": 3, "weight": 70, "repetitions": 8}
+            ]
+        },
+        {
+            "name": "Incline Bench Press",
+            "exerciseId": "BP2",
+            "vol": 1760,
+            "perceivedEffort": 62,
+            "sets": [
+                {"id": 1, "weight": 50, "repetitions": 12},
+                {"id": 2, "weight": 60, "repetitions": 10},
+                {"id": 3, "weight": 70, "repetitions": 8}
+            ]
+        },
+        {
+            "name": "Skull Crushers",
+            "exerciseId": "SC1",
+            "vol": 1760,
+            "perceivedEffort": 80,
+            "sets": [
+                {"id": 1, "weight": 50, "repetitions": 12},
+                {"id": 2, "weight": 60, "repetitions": 10},
+                {"id": 3, "weight": 70, "repetitions": 8}
+            ]
+        }
+    ]
+}
