@@ -37,13 +37,12 @@ const ButtonElement = styled.button<IButton>`
 	border: 0;
 	border-radius: 2rem;
 	color: var(--primaryDark);
-	background-color: var(--primaryColor);
+	background-color: white;
 	cursor: pointer;
-	${(props) => (props.$fixWidth ? null : " width:3rem; margin-left:auto;")}
+	${(props) => (props.$fixWidth ? null : " width:3rem;")}
 	${(props) => (props.$fill ? "width:100%;" : null)}
 	&:disabled,
 	&[disabled] {
-		opacity: 0.3;
 	}
 	transition: opacity 0.2s ease;
 `;

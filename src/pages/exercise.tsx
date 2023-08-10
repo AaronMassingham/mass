@@ -7,12 +7,17 @@ import { WorkoutContext } from "@contexts/WorkoutContext";
 
 //Components
 import AddExerciseSet from "@components/forms/AddExerciseSet";
-import SetExerciseName from "@components/forms/SetExerciseName";
+import SearchExercise from "@components/forms/SearchExercise";
 import CompletedSetsList from "@components/app/CompletedSetsList";
-import Button from "@components/Button";
+import WrapperContainer from "@components/app/WrapperContainer";
+import Heading from "@components/app/Heading";
+import SlideButton from "@components/buttons/SlideButton";
 
 //Types
 import { Exercise } from "@typescriptTypes/workoutTypes";
+
+//Constants
+import { EXERCISELIST } from "@constants/Exercises";
 
 export default function Exercise() {
 	const router = useRouter();
@@ -33,9 +38,7 @@ export default function Exercise() {
 		0
 	);
 
-	const pushToWorkout = (e: React.MouseEvent<HTMLButtonElement>) => {
-		e.preventDefault();
-
+	const pushToWorkout = () => {
 		setWorkoutState((prevState: any) => ({
 			...prevState,
 			exercises: [
@@ -52,7 +55,23 @@ export default function Exercise() {
 		router.push("/workout");
 	};
 
-	const ensureData = exerciseConstructor.name === "" || exerciseConstructor.sets.length === 0;
+	const handleClearName = (e: React.MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+		setExerciseConstructor((prevState: any) => ({
+			...prevState,
+			name: "",
+		}));
+	};
+
+	console.log(exerciseConstructor);
+
+	const hasExerciseName = exerciseConstructor.name !== "";
+	const hasExerciseSets = exerciseConstructor.sets.length !== 0;
+	const hasVolume = calculateVolume !== 0 && (
+		<>
+			<strong>vol</strong> {calculateVolume.toString()} kg
+		</>
+	);
 
 	return (
 		<>
@@ -62,19 +81,36 @@ export default function Exercise() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<h1>Exercise {exerciseLength + 1}</h1>
-			<SetExerciseName setName={setExerciseConstructor} defaultName={exerciseConstructor.name} />
-			<CompletedSetsList data={exerciseConstructor.sets} exerciseSets={setExerciseConstructor} />
-
-			{exerciseConstructor.name && (
-				<AddExerciseSet
-					exerciseSetLength={exerciseConstructor.sets.length}
-					exerciseSets={setExerciseConstructor}
+			<WrapperContainer variant="overflow">
+				<Heading
+					variant="plain"
+					onClick={handleClearName}
+					text={hasExerciseName ? exerciseConstructor.name : "select exercise"}
+					secondaryText={hasVolume}
 				/>
-			)}
-			{!ensureData && (
-				<Button onClick={pushToWorkout} fullw text={`finish ${exerciseConstructor.name}`} />
-			)}
+
+				{hasExerciseName ? (
+					<CompletedSetsList
+						data={exerciseConstructor.sets}
+						exerciseSets={setExerciseConstructor}
+					/>
+				) : (
+					<SearchExercise
+						possibleNames={EXERCISELIST}
+						setName={setExerciseConstructor}
+						defaultName={exerciseConstructor.name}
+					/>
+				)}
+			</WrapperContainer>
+			<WrapperContainer variant="pinned">
+				{hasExerciseName && (
+					<AddExerciseSet
+						exerciseSetLength={exerciseConstructor.sets.length}
+						exerciseSets={setExerciseConstructor}
+					/>
+				)}
+				{hasExerciseSets && <SlideButton onDragEnd={pushToWorkout} text="finish" />}
+			</WrapperContainer>
 		</>
 	);
 }

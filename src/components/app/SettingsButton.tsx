@@ -22,12 +22,14 @@ const Container = styled.div<IProps>`
 	width: ${(props) => props.width}em;
 	aspect-ratio: 1;
 	border-radius: 100%;
-	background: var(--primaryDark);
+	background: var(--secondaryDark);
 	display: grid;
 	place-items: center;
 	& svg {
-		max-width: 60%;
-		fill: var(--bodyTextColor);
+		max-width: 65%;
+		fill: none;
+		stroke-width: 1.5px;
+		stroke: var(--bodyTextColor);
 	}
 `;
 

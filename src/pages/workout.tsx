@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
-import Head from "next/head";
 import { useRouter } from "next/router";
+import Head from "next/head";
+import Link from "next/link";
 
 //Contexts
 import { WorkoutContext, initialWorkoutState } from "@contexts/WorkoutContext";
@@ -8,7 +9,9 @@ import { WorkoutContext, initialWorkoutState } from "@contexts/WorkoutContext";
 //Components
 import SetWorkoutName from "@components/forms/SetWorkoutName";
 import ExerciseList from "@components/app/ExerciseList";
-import Button from "@components/Button";
+import FancyButton from "@components/buttons/FancyButton";
+import WrapperContainer from "@components/app/WrapperContainer";
+import Plus from "@components/icons/Plus";
 
 export default function Workout() {
 	const router = useRouter();
@@ -28,6 +31,8 @@ export default function Workout() {
 		router.push("/");
 	};
 
+	const hasExercises = workoutState.exercises.length >= 1;
+
 	return (
 		<>
 			<Head>
@@ -36,11 +41,17 @@ export default function Workout() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<h1>Workout</h1>
-			<SetWorkoutName />
-			<ExerciseList />
 
-			<Button onClick={uploadWorkout} fullw text={`finish`} />
+			<WrapperContainer variant="overflow">
+				{hasExercises ? <ExerciseList /> : <SetWorkoutName />}
+			</WrapperContainer>
+
+			<WrapperContainer variant="pinned">
+				<Link href="/exercise">
+					<FancyButton icon={<Plus />} text="add" />
+				</Link>
+				{/* {hasExercises && <Button onClick={uploadWorkout} fullw text="End workout" />} */}
+			</WrapperContainer>
 		</>
 	);
 }

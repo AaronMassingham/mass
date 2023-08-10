@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-//Components
-import Times from "@components/icons/Times";
-
 //Types
 import { Exercise } from "@typescriptTypes/workoutTypes";
+
+//Components
+import Times from "@components/icons/Times";
 
 type Props = {
 	completedExercises: Exercise;

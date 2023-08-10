@@ -16,6 +16,7 @@ const Container = styled.div`
 	border: 1px dashed var(--secondaryLight);
 	color: var(--secondaryLight);
 	border-radius: var(--radius);
+	text-wrap: balance;
 `;
 
 export default NoData;

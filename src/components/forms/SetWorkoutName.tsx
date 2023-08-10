@@ -1,10 +1,11 @@
 import React, { useContext, ChangeEvent } from "react";
-
-//Components
-import Input from "@components/form-elements/Input";
+import styled from "styled-components";
 
 //Context
 import { WorkoutContext } from "@contexts/WorkoutContext";
+
+//Components
+import Input from "@components/form-elements/Input";
 
 const SetWorkoutName = () => {
 	const { workoutState, setWorkoutState } = useContext(WorkoutContext);
@@ -17,7 +18,7 @@ const SetWorkoutName = () => {
 		}));
 	};
 	return (
-		<div>
+		<Container>
 			<Input
 				type="text"
 				name="name"
@@ -25,8 +26,15 @@ const SetWorkoutName = () => {
 				onChange={assignWorkoutName}
 				placeholder="Name your workout"
 			/>
-		</div>
+		</Container>
 	);
 };
+
+const Container = styled.div`
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+`;
 
 export default SetWorkoutName;

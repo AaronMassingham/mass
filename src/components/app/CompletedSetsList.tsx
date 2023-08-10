@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
+//Types
+import { Exercise, Set } from "@typescriptTypes/workoutTypes";
+
 //Components
 import NoData from "@components/NoData";
 import CompletedSetItem from "@components/app/CompletedSetItem";
-import Button from "@components/Button";
-import Times from "@components/icons/Times";
-
-import { Exercise, Set } from "@typescriptTypes/workoutTypes";
+import Trash from "@components/icons/Trash";
 
 type Props = {
 	data: Set[];
@@ -14,8 +14,6 @@ type Props = {
 };
 
 const CompletedSetsList = ({ data, exerciseSets }: Props) => {
-	const volume = data.reduce((accumulator, set) => accumulator + set.weight * set.repetitions, 0);
-
 	const handleSetDelete = (setId: number) => {
 		exerciseSets((prevState) => ({
 			...prevState,
@@ -36,21 +34,13 @@ const CompletedSetsList = ({ data, exerciseSets }: Props) => {
 								repetitions={set.repetitions}
 								setNumber={index + 1}
 							>
-								<Button
-									onClick={() => handleSetDelete(set.id)}
-									text={<Times fillColor="var(--primaryDark)" />}
-								/>
+								<button onClick={() => handleSetDelete(set.id)}>
+									<Trash />
+								</button>
 							</CompletedSetItem>
 						))
 					) : (
 						<NoData message="Your sets will appear here" />
-					)}
-				</div>
-				<div>
-					{volume !== 0 && (
-						<>
-							<strong>TVol</strong> {volume}kg
-						</>
 					)}
 				</div>
 			</Container>
@@ -65,14 +55,13 @@ const Container = styled.div`
 	gap: 1rem;
 	& > div:first-child {
 		display: grid;
-		gap: 1rem;
-	}
-	& > div:last-child {
-		margin-left: auto;
-		padding-right: 6rem;
+		gap: 2rem;
 	}
 	& strong {
 		color: var(--primaryColor);
+	}
+	& button {
+		width: 1rem;
 	}
 `;
 
