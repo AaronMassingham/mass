@@ -1,27 +1,36 @@
 import styled, { css } from "styled-components";
+import { motion } from "framer-motion";
 
-const WrapperContainer = ({ children, variant }: Props) => {
-	return <Container $variant={variant}>{children}</Container>;
+const WrapperContainer = ({ children, variant, hasSibling }: Props) => {
+	return (
+		<Container layout $variant={variant} $hasSibling={hasSibling}>
+			{children}
+		</Container>
+	);
 };
 
 type Props = {
 	children: React.ReactNode;
 	variant: "overflow" | "pinned";
+	hasSibling?: boolean;
 };
 
 type StyleProps = {
 	$variant: "overflow" | "pinned";
+	$hasSibling?: boolean;
 };
 
-const Container = styled.div<StyleProps>`
+const Container = styled(motion.div)<StyleProps>`
+	max-height: ${(props) => (props.$hasSibling === false ? "unset" : "calc(100% - 220px)")};
 	${(props) => {
 		switch (props.$variant) {
 			case "overflow":
 				return css`
 					flex: 1;
+					display: flex;
+					flex-direction: column;
 					min-height: calc(100% - 220px);
-					max-height: calc(100% - 220px);
-					overflow: scroll;
+					overflow: hidden;
 					height: 100%;
 					scrollbar-width: none;
 					&::-webkit-scrollbar {
@@ -40,26 +49,11 @@ const Container = styled.div<StyleProps>`
 					padding-bottom: var(--padding);
 
 					margin-bottom: -1rem;
-					background-color: var(--primaryDark);
+					background-color: var(--gray900);
 					display: flex;
 					flex-direction: column;
-					justify-content: space-between;
+					justify-content: center;
 					align-items: center;
-
-					&:before {
-						pointer-events: none;
-						content: "";
-						width: 100%;
-						height: 3rem;
-						position: absolute;
-						top: -3rem;
-
-						background: linear-gradient(
-							0deg,
-							rgba(var(--primaryDarkGrad), 1) 50%,
-							rgba(var(--primaryDarkGrad), 0) 100%
-						);
-					}
 				`;
 		}
 	}}

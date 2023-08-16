@@ -1,29 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useState, MouseEvent } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { AnimatePresence } from "framer-motion";
 
 //Context
-import { WorkoutContext } from "@contexts/WorkoutContext";
+import { useWorkoutContext } from "@contexts/WorkoutContextAlt";
 
 //Components
 import AddExerciseSet from "@components/forms/AddExerciseSet";
 import SearchExercise from "@components/forms/SearchExercise";
-import CompletedSetsList from "@components/app/CompletedSetsList";
-import WrapperContainer from "@components/app/WrapperContainer";
+import CompletedSetsList from "@components/data-display/CompletedSetsList";
+import WrapperContainer from "@components/wrappers/WrapperContainer";
 import Heading from "@components/app/Heading";
 import SlideButton from "@components/buttons/SlideButton";
 
 //Types
-import { Exercise } from "@typescriptTypes/workoutTypes";
+import { Exercise, Workout } from "@typescriptTypes/workoutTypes";
 
 //Constants
 import { EXERCISELIST } from "@constants/Exercises";
 
 export default function Exercise() {
 	const router = useRouter();
-	const { workoutState, setWorkoutState } = useContext(WorkoutContext);
-
-	const exerciseLength = workoutState.exercises.length;
+	const { workoutState, setWorkoutState } = useWorkoutContext();
 
 	const [exerciseConstructor, setExerciseConstructor] = useState<Exercise>({
 		name: "",
@@ -39,7 +38,7 @@ export default function Exercise() {
 	);
 
 	const pushToWorkout = () => {
-		setWorkoutState((prevState: any) => ({
+		setWorkoutState((prevState: Workout) => ({
 			...prevState,
 			exercises: [
 				...prevState.exercises,
@@ -53,17 +52,16 @@ export default function Exercise() {
 			],
 		}));
 		router.push("/workout");
+		localStorage.setItem("current-workout", JSON.stringify(workoutState));
 	};
 
-	const handleClearName = (e: React.MouseEvent<HTMLButtonElement>) => {
+	const handleClearName = (e: MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
-		setExerciseConstructor((prevState: any) => ({
+		setExerciseConstructor((prevState: Exercise) => ({
 			...prevState,
 			name: "",
 		}));
 	};
-
-	console.log(exerciseConstructor);
 
 	const hasExerciseName = exerciseConstructor.name !== "";
 	const hasExerciseSets = exerciseConstructor.sets.length !== 0;
@@ -88,29 +86,38 @@ export default function Exercise() {
 					text={hasExerciseName ? exerciseConstructor.name : "select exercise"}
 					secondaryText={hasVolume}
 				/>
-
-				{hasExerciseName ? (
-					<CompletedSetsList
-						data={exerciseConstructor.sets}
-						exerciseSets={setExerciseConstructor}
-					/>
-				) : (
-					<SearchExercise
-						possibleNames={EXERCISELIST}
-						setName={setExerciseConstructor}
-						defaultName={exerciseConstructor.name}
-					/>
-				)}
+				<AnimatePresence mode="wait">
+					{hasExerciseName ? (
+						<CompletedSetsList
+							key="sets"
+							data={exerciseConstructor.sets}
+							exerciseSets={setExerciseConstructor}
+						/>
+					) : (
+						<>
+							<SearchExercise
+								key="search"
+								possibleNames={EXERCISELIST}
+								setName={setExerciseConstructor}
+								defaultName={exerciseConstructor.name}
+							/>
+							<p>Add new</p>
+						</>
+					)}
+				</AnimatePresence>
 			</WrapperContainer>
-			<WrapperContainer variant="pinned">
-				{hasExerciseName && (
-					<AddExerciseSet
-						exerciseSetLength={exerciseConstructor.sets.length}
-						exerciseSets={setExerciseConstructor}
-					/>
-				)}
-				{hasExerciseSets && <SlideButton onDragEnd={pushToWorkout} text="finish" />}
-			</WrapperContainer>
+			{hasExerciseName && (
+				<WrapperContainer variant="pinned">
+					<AnimatePresence>
+						{hasExerciseName && (
+							<AddExerciseSet key="add-sets" exerciseSets={setExerciseConstructor} />
+						)}
+						{hasExerciseSets && (
+							<SlideButton key="slide-button" onDragEnd={pushToWorkout} text="slide to finish" />
+						)}
+					</AnimatePresence>
+				</WrapperContainer>
+			)}
 		</>
 	);
 }

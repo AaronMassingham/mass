@@ -11,7 +11,7 @@ const Trash = () => {
 const Container = styled.svg`
 	height: 44%;
 	aspect-ratio: 1;
-	fill: var(--primaryColor);
+	fill: var(--brand500);
 `;
 
 export default Trash;

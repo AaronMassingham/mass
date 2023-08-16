@@ -1,19 +1,22 @@
-import React, { useContext } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 //Context
-import { WorkoutContext } from "@contexts/WorkoutContext";
+import { useWorkoutContext } from "@contexts/WorkoutContextAlt";
 
 //Components
 import Profile from "@components/app/Profile";
 import Nav from "@components/buttons/Nav";
 import PullTab from "@components/app/PullTab";
-import BackBtn from "../buttons/BackBtn";
+import BackBtn from "@components/buttons/BackBtn";
+
+//Hooks
+import { useHydration } from "@hooks/useHydration";
 
 const Header = () => {
-	const { workoutState } = useContext(WorkoutContext);
+	const { workoutState } = useWorkoutContext();
+	const isHydrated = useHydration();
 
 	const router = useRouter();
 	const user = "aaron";
@@ -21,19 +24,74 @@ const Header = () => {
 
 	const backButtonCondition = pathNotIndex && <BackBtn />;
 
+	const parent = {
+		initial: {
+			height: "0rem",
+			transition: { when: "beforeChildren", duration: 0.5 },
+		},
+		animate: {
+			height: "2rem",
+			transition: { duration: 0.5 },
+		},
+		exit: {
+			height: "0rem",
+			transition: { when: "afterChildren", duration: 0.5 },
+		},
+	};
+
+	const child = {
+		initial: {
+			opacity: 0,
+		},
+		animate: {
+			opacity: 1,
+			transition: {
+				duration: 0.35,
+				delay: 0.5,
+			},
+		},
+		exit: {
+			opacity: 0,
+		},
+	};
+
 	return (
-		<Container>
-			<HeaderContainer>
-				<Profile />
-				<AnimatePresence mode="wait">{backButtonCondition}</AnimatePresence>
-				<Nav />
-			</HeaderContainer>
-			<PullTab text={workoutState.name && pathNotIndex ? workoutState.name : user} />
-		</Container>
+		isHydrated && (
+			<Container>
+				<HeaderContainer>
+					<Profile />
+					<AnimatePresence mode="wait">{backButtonCondition}</AnimatePresence>
+					<Nav />
+				</HeaderContainer>
+				<AnimatePresence>
+					{workoutState.name && (
+						<motion.div
+							key="test"
+							variants={parent}
+							initial="initial"
+							animate="animate"
+							exit="exit"
+							layout
+						>
+							<motion.h1
+								variants={child}
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 0 }}
+							>
+								{workoutState.name}
+							</motion.h1>
+						</motion.div>
+					)}
+
+					<PullTab hasWorkoutName={workoutState.name ? true : false} text={user} />
+				</AnimatePresence>
+			</Container>
+		)
 	);
 };
 
-const Container = styled.header`
+const Container = styled(motion.header)`
 	position: relative;
 	z-index: 10;
 
@@ -51,6 +109,9 @@ const Container = styled.header`
 		right: 0;
 		transform: rotate(90deg);
 	}
+	& > div:first-of-type {
+		background: var(--gray800);
+	}
 `;
 const HeaderContainer = styled.header`
 	display: flex;
@@ -58,7 +119,7 @@ const HeaderContainer = styled.header`
 	align-items: center;
 	width: 100%;
 	padding: var(--padding);
-	background-color: var(--secondaryDark);
+	background-color: var(--gray800);
 	position: relative;
 	z-index: 2;
 	& > div:first-of-type {

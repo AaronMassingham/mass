@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
-const Seperator = () => {
+type Props = {
+	direction: "up" | "down";
+};
+
+const Seperator = ({ direction }: Props) => {
 	return (
-		<Container>
+		<Container $direction={direction}>
 			<div>
 				<div />
 			</div>
@@ -10,7 +14,12 @@ const Seperator = () => {
 	);
 };
 
-const Container = styled.div`
+interface ContainerProps {
+	$direction: string;
+}
+
+const Container = styled.div<ContainerProps>`
+	transform: ${(props) => props.$direction === "up" && "rotate(180deg)"};
 	& > div {
 		margin-top: 0;
 		width: 100%;

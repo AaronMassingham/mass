@@ -1,3 +1,4 @@
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 
 //Components
@@ -8,16 +9,16 @@ type Props = {
 	weight: number;
 	repetitions: number;
 	setId: number;
-	children: React.ReactNode;
+	children: ReactNode;
 };
 
-const CompletedSetItem = ({ setNumber, weight, repetitions, children }: Props) => {
+const CompletedSetsListItem = ({ setNumber, weight, repetitions, children }: Props) => {
 	return (
 		<Container>
 			<div>{setNumber}</div>
 
 			<Value>{weight.toString()}</Value>
-			<Times fillColor="var(--primaryColor)" />
+			<Times bgColor="var(--gray900)" fillColor="var(--brand500)" />
 			<Value>{repetitions.toString()}</Value>
 
 			<div>{children}</div>
@@ -26,7 +27,7 @@ const CompletedSetItem = ({ setNumber, weight, repetitions, children }: Props) =
 };
 
 const Value = styled.div`
-	border-bottom: 1px solid var(--secondaryLight);
+	border-bottom: 1px solid var(--gray700);
 	flex: 1;
 	border-radius: var(--radius);
 	padding-bottom: 0.5rem;
@@ -36,8 +37,8 @@ const Value = styled.div`
 `;
 
 const Container = styled.div`
-	max-width: 75%;
 	width: 100%;
+
 	margin: auto;
 	display: flex;
 	flex-wrap: wrap;
@@ -45,14 +46,16 @@ const Container = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	gap: 1rem;
-
+	position: relative;
+	z-index: 2;
+	scroll-snap-align: start; //<-- causing janky behaviour on state update
 	& > div {
 		&:first-child,
 		&:last-child {
 			width: 1rem;
-			color: var(--primaryColor);
+			color: var(--brand500);
 		}
 	}
 `;
 
-export default CompletedSetItem;
+export default CompletedSetsListItem;

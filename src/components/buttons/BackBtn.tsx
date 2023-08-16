@@ -1,3 +1,4 @@
+import React, { MouseEvent } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
@@ -8,7 +9,7 @@ import { backButtonVariants } from "@constants/FramerVariants";
 const BackBtn = () => {
 	const router = useRouter();
 
-	const handleBackButton = (e: React.MouseEvent<HTMLButtonElement>) => {
+	const handleBackButton = (e: MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		router.back();
 	};

@@ -1,5 +1,7 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, MouseEvent, Dispatch } from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+import { v4 as uuidv4 } from "uuid";
 
 //Components
 import Input from "@components/form-elements/Input";
@@ -9,20 +11,19 @@ import Seperator from "@components/app/Seperator";
 
 //Helpers
 import { validateNumberValue } from "@helpers/validationHelpers";
+import { genericFadeOutVariants } from "@constants/FramerVariants";
 
 type Props = {
-	exerciseSetLength: number;
-	exerciseSets: React.Dispatch<React.SetStateAction<any | null>>;
+	exerciseSets: Dispatch<React.SetStateAction<any | null>>;
 };
 
-const AddExerciseSet = ({ exerciseSetLength, exerciseSets }: Props) => {
+const AddExerciseSet = ({ exerciseSets }: Props) => {
 	const [currentSet, setCurrentSet] = useState({
 		weight: null,
 		repetitions: null,
 	});
 	const weight = currentSet.weight;
 	const reps = currentSet.repetitions;
-	const exerciseCount = exerciseSetLength + 1;
 
 	const checkForValues =
 		validateNumberValue(weight, 1, 999) ||
@@ -39,7 +40,7 @@ const AddExerciseSet = ({ exerciseSetLength, exerciseSets }: Props) => {
 		}));
 	};
 
-	const handleAppendExerciseSet = (e: React.MouseEvent<HTMLButtonElement>) => {
+	const handleAppendExerciseSet = (e: MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		if (checkForValues) {
 			alert("weight and repetitions need a value between 1 and 999.");
@@ -51,7 +52,7 @@ const AddExerciseSet = ({ exerciseSetLength, exerciseSets }: Props) => {
 			sets: [
 				...prevState.sets,
 				{
-					id: exerciseCount,
+					id: uuidv4(),
 					weight: weight,
 					repetitions: reps,
 				},
@@ -66,8 +67,8 @@ const AddExerciseSet = ({ exerciseSetLength, exerciseSets }: Props) => {
 
 	return (
 		<>
-			<Container>
-				<Seperator />
+			<Container layout {...genericFadeOutVariants}>
+				<Seperator direction="up" />
 				<div>
 					<Input
 						tag="kg"
@@ -93,7 +94,7 @@ const AddExerciseSet = ({ exerciseSetLength, exerciseSets }: Props) => {
 					<Button
 						isLoading={checkForValues}
 						onClick={handleAppendExerciseSet}
-						text={<Times isRotated fillColor="var(--primaryDark)" />}
+						text={<Times isRotated fillColor="var(--gray900)" />}
 					/>
 				</div>
 			</Container>
@@ -101,7 +102,7 @@ const AddExerciseSet = ({ exerciseSetLength, exerciseSets }: Props) => {
 	);
 };
 
-const Container = styled.form`
+const Container = styled(motion.form)`
 	width: calc(100% + 4rem);
 	padding: 0 2rem;
 	height: auto;
@@ -110,7 +111,7 @@ const Container = styled.form`
 	flex-direction: column;
 	align-items: center;
 	position: relative;
-	background: var(--secondaryDark);
+	background: var(--gray800);
 	z-index: 1;
 	&:before,
 	&:after {
@@ -152,7 +153,7 @@ const Container = styled.form`
 			width: 150%;
 			height: 150%;
 			border-radius: 100%;
-			background: var(--primaryDark);
+			background: var(--gray800);
 			z-index: -1;
 		}
 		&:after {

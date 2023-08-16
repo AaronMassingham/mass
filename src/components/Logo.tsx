@@ -19,7 +19,7 @@ const Svg = styled.svg`
 	}
 	& > path:last-child {
 		fill: none;
-		stroke: var(--primaryColor);
+		stroke: var(--brand500);
 		stroke-width: 2;
 		stroke-linecap: round;
 		stroke-miterlimit: 10;

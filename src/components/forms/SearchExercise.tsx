@@ -5,6 +5,9 @@ import { motion } from "framer-motion";
 //Components
 import Input from "@components/form-elements/Input";
 
+//Constants
+import { genericFadeOutVariants } from "@constants/FramerVariants";
+
 type Props = {
 	setName: React.Dispatch<React.SetStateAction<any | null>>;
 	defaultName: string;
@@ -19,55 +22,63 @@ const SearchExercise = ({ setName, possibleNames }: Props) => {
 	);
 
 	const handleNameChange = (name: string) => {
-		setSearchTerm("");
+		setTimeout(() => {
+			setSearchTerm("");
+		}, 300);
 		setName((prevState: any) => ({
 			...prevState,
 			name,
 		}));
 	};
+
+	console.log(searchTerm);
+
 	return (
-		<Container>
+		<Container {...genericFadeOutVariants}>
 			<Input
 				type="text"
-				placeholder="Search exercise names"
+				placeholder="Type to filter"
 				value={searchTerm}
 				onChange={(e) => setSearchTerm(e.target.value)}
 			/>
-			<motion.ul layout="position">
-				{filteredNames.map((name) => (
-					<motion.li
-						layout="position"
-						key={name}
-						onClick={() => handleNameChange(name)}
-						style={{ cursor: "pointer" }}
-					>
-						{name}
-					</motion.li>
-				))}
-			</motion.ul>
+			<div>
+				<motion.ul>
+					{filteredNames.map((name) => (
+						<motion.li layout key={name} onClick={() => handleNameChange(name)}>
+							{name}
+						</motion.li>
+					))}
+				</motion.ul>
+			</div>
 		</Container>
 	);
 };
 
-const Container = styled.div`
-	& > div {
-		margin: 3rem 0 0 0;
+const Container = styled(motion.div)`
+	height: -webkit-fill-available;
+	& > div:last-of-type {
+		position: relative;
+		height: calc(100% - 7rem);
 	}
+
 	& ul {
-		max-height: 300px;
-		height: 100%;
-		overflow: scroll;
-		padding: 0 0 var(--padding) 0;
-		list-style: none;
-		display: flex;
-		flex-direction: column;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: -webkit-fill-available;
+		overflow-y: scroll;
 		scrollbar-width: none;
 		&::-webkit-scrollbar {
 			display: none;
 		}
 		& > li {
-			padding: calc(var(--padding) * 1.5) 0;
-			border-bottom: 1px solid var(--secondaryLight);
+			height: 4rem;
+			display: grid;
+			place-items: center start;
+			border-bottom: 1px solid var(--gray700);
+			cursor: pointer;
 		}
 	}
 `;

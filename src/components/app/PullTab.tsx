@@ -11,12 +11,17 @@ const Svg = () => {
 
 type Props = {
 	text: string;
+	hasWorkoutName: boolean;
 };
 
-const PullTab = ({ text }: Props) => {
+const PullTab = ({ text, hasWorkoutName }: Props) => {
 	return (
 		<Container>
-			<motion.div layout="position">
+			<motion.div
+				initial={{ color: "#FFF" }}
+				animate={{ color: hasWorkoutName ? "var(--gray700)" : "#FFF" }}
+				transition={{ delay: 1, duration: 1 }}
+			>
 				<Svg />
 				{text}
 				<Svg />
@@ -27,7 +32,7 @@ const PullTab = ({ text }: Props) => {
 
 const Container = styled(motion.div)`
 	width: 100%;
-	background: var(--secondaryDark);
+	background: var(--gray800);
 	display: flex;
 	justify-content: center;
 	text-align: center;
@@ -45,12 +50,12 @@ const Container = styled(motion.div)`
 		min-width: 4rem;
 		padding: 0 1rem;
 
-		background: var(--secondaryDark);
+		background: var(--gray800);
 		& svg {
 			position: absolute;
 			height: 100%;
 			aspect-ratio: 1/0.5;
-			fill: var(--secondaryDark);
+			fill: var(--gray800);
 			top: 0;
 			right: 100%;
 			&:last-of-type {
@@ -60,10 +65,6 @@ const Container = styled(motion.div)`
 			}
 		}
 	}
-
-	-webkit-box-shadow: 0px 6px 25px 15px rgba(var(--primaryDarkGrad), 1);
-	-moz-box-shadow: 0px 6px 25px 15px rgba(var(--primaryDarkGrad), 1);
-	box-shadow: 0px 6px 25px 15px rgba(var(--primaryDarkGrad), 1);
 `;
 
 export default PullTab;

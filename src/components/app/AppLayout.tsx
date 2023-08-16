@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Inter } from "next/font/google";
 
 //Contexts
-import { WorkoutProvider } from "@contexts/WorkoutContext";
+import { WorkoutProvider } from "@contexts/WorkoutContextAlt";
 
 //Components
 import Header from "@components/app/Header";

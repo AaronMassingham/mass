@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { rotatingTextAnimation } from "@constants/FramerVariants";
 
 type Props = {
-	variant: "start" | "continue" | "add";
+	variant: "start" | "continue" | "add" | "loading";
 };
 
 const RotatingText = ({ variant }: Props) => {
@@ -24,6 +24,9 @@ const RotatingText = ({ variant }: Props) => {
 	} else if (variant === "add") {
 		defaultStyles = { letterSpacing: 0.14, fontSize: 0.852 };
 		text = "add new exercise";
+	} else {
+		defaultStyles = { letterSpacing: 0.14, fontSize: 0.852 };
+		text = "loading";
 	}
 
 	let elementText = `${text}  .  ${text}  .  ${text}  .`;
@@ -59,8 +62,8 @@ interface SvgProps {
 }
 
 const Container = styled(motion.svg)<SvgProps>`
-	height: 100%;
-	width: 100%;
+	height: 130%;
+	width: 130%;
 	& > text {
 		letter-spacing: ${(props) => props.$spacing && `${props.$spacing}rem`};
 		font-size: ${(props) => props.$sizing && `${props.$sizing}rem`};

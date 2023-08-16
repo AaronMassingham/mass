@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 //Components
 import UserImage from "@components/app/UserImage";
-import SettingsButton from "./SettingsButton";
+import Cog from "@components/icons/Cog";
 
 const Profile = () => {
 	const profileSize = 3.75;
@@ -10,7 +10,7 @@ const Profile = () => {
 	return (
 		<Container>
 			<UserImage width={profileSize}>
-				<SettingsButton size={profileSize / 2} />
+				<Cog size={profileSize / 2} />
 			</UserImage>
 		</Container>
 	);

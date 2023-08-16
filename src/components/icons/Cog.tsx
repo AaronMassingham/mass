@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const SettingsButton = ({ size }: Props) => {
+const Cog = ({ size }: Props) => {
 	return (
 		<Container width={size ? size : 2}>
 			<svg viewBox="0 0 26.1 27.2">
@@ -22,15 +22,15 @@ const Container = styled.div<IProps>`
 	width: ${(props) => props.width}em;
 	aspect-ratio: 1;
 	border-radius: 100%;
-	background: var(--secondaryDark);
+	background: var(--gray800);
 	display: grid;
 	place-items: center;
 	& svg {
 		max-width: 65%;
 		fill: none;
 		stroke-width: 1.5px;
-		stroke: var(--bodyTextColor);
+		stroke: #ffffff;
 	}
 `;
 
-export default SettingsButton;
+export default Cog;

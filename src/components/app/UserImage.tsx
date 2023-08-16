@@ -6,7 +6,7 @@ const UserImage = ({ children, width }: Props) => {
 	return (
 		<Link href="/profile">
 			<Container $width={width}>
-				<Image src="/test-profile.jpg" alt="Profile Image" fill />
+				<Image src="/test-profile.jpg" alt="Profile Image" fill sizes="120px" />
 				{children}
 			</Container>
 		</Link>
@@ -27,7 +27,7 @@ const Container = styled.div<ContainerProps>`
 	border-radius: 100%;
 	position: relative;
 	transform-style: preserve-3d;
-	border: 3px solid var(--secondaryDark);
+	border: 3px solid var(--gray800);
 	& img {
 		border-radius: 100%;
 	}
@@ -40,8 +40,8 @@ const Container = styled.div<ContainerProps>`
 
 		background: linear-gradient(
 			0deg,
-			rgba(var(--primaryDarkGrad), 1) 10%,
-			rgba(var(--primaryDarkGrad), 0) 50%
+			rgba(var(--gray900Grad), 1) 10%,
+			rgba(var(--gray900Grad), 0) 50%
 		);
 		bottom: -1px;
 		left: 0;
