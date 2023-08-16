@@ -1,10 +1,10 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 
 //Types
 import { ButtonProps } from "@typescriptTypes/buttonTypes";
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	({ onClick, isLoading, text, fullw, buttonType }, ref) => {
 		const typeIsString = typeof text === "string";
 		return (
@@ -36,14 +36,13 @@ const ButtonElement = styled.button<IButton>`
 	font-size: initial;
 	border: 0;
 	border-radius: 2rem;
-	color: var(--primaryDark);
-	background-color: var(--primaryColor);
+	color: var(--gray900);
+	background-color: white;
 	cursor: pointer;
-	${(props) => (props.$fixWidth ? null : " width:3rem; margin-left:auto;")}
+	${(props) => (props.$fixWidth ? null : " width:3rem;")}
 	${(props) => (props.$fill ? "width:100%;" : null)}
 	&:disabled,
 	&[disabled] {
-		opacity: 0.3;
 	}
 	transition: opacity 0.2s ease;
 `;

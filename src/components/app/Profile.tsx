@@ -2,14 +2,15 @@ import styled from "styled-components";
 
 //Components
 import UserImage from "@components/app/UserImage";
-import SettingsButton from "./SettingsButton";
+import Cog from "@components/icons/Cog";
 
 const Profile = () => {
+	const profileSize = 3.75;
+
 	return (
 		<Container>
-			<small>Aaron</small>
-			<UserImage>
-				<SettingsButton size={1.5} />
+			<UserImage width={profileSize}>
+				<Cog size={profileSize / 2} />
 			</UserImage>
 		</Container>
 	);
@@ -21,11 +22,11 @@ const Container = styled.div`
 	align-items: center;
 	gap: var(--padding);
 	position: relative;
-
 	& div > div {
 		position: absolute;
-		bottom: -10%;
-		transform: translateX(50%);
+		bottom: -25%;
+		transform: translateX(calc(50% - 3px));
+		left: 0;
 	}
 `;
 

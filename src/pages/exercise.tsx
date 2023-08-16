@@ -1,24 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useState, MouseEvent } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { AnimatePresence } from "framer-motion";
 
 //Context
-import { WorkoutContext } from "@contexts/WorkoutContext";
+import { useWorkoutContext } from "@contexts/WorkoutContextAlt";
 
 //Components
 import AddExerciseSet from "@components/forms/AddExerciseSet";
-import SetExerciseName from "@components/forms/SetExerciseName";
-import CompletedSetsList from "@components/app/CompletedSetsList";
-import Button from "@components/Button";
+import SearchExercise from "@components/forms/SearchExercise";
+import CompletedSetsList from "@components/data-display/CompletedSetsList";
+import WrapperContainer from "@components/wrappers/WrapperContainer";
+import Heading from "@components/app/Heading";
+import SlideButton from "@components/buttons/SlideButton";
 
 //Types
-import { Exercise } from "@typescriptTypes/workoutTypes";
+import { Exercise, Workout } from "@typescriptTypes/workoutTypes";
+
+//Constants
+import { EXERCISELIST } from "@constants/Exercises";
 
 export default function Exercise() {
 	const router = useRouter();
-	const { workoutState, setWorkoutState } = useContext(WorkoutContext);
-
-	const exerciseLength = workoutState.exercises.length;
+	const { workoutState, setWorkoutState } = useWorkoutContext();
 
 	const [exerciseConstructor, setExerciseConstructor] = useState<Exercise>({
 		name: "",
@@ -33,10 +37,8 @@ export default function Exercise() {
 		0
 	);
 
-	const pushToWorkout = (e: React.MouseEvent<HTMLButtonElement>) => {
-		e.preventDefault();
-
-		setWorkoutState((prevState: any) => ({
+	const pushToWorkout = () => {
+		setWorkoutState((prevState: Workout) => ({
 			...prevState,
 			exercises: [
 				...prevState.exercises,
@@ -50,9 +52,24 @@ export default function Exercise() {
 			],
 		}));
 		router.push("/workout");
+		localStorage.setItem("current-workout", JSON.stringify(workoutState));
 	};
 
-	const ensureData = exerciseConstructor.name === "" || exerciseConstructor.sets.length === 0;
+	const handleClearName = (e: MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+		setExerciseConstructor((prevState: Exercise) => ({
+			...prevState,
+			name: "",
+		}));
+	};
+
+	const hasExerciseName = exerciseConstructor.name !== "";
+	const hasExerciseSets = exerciseConstructor.sets.length !== 0;
+	const hasVolume = calculateVolume !== 0 && (
+		<>
+			<strong>vol</strong> {calculateVolume.toString()} kg
+		</>
+	);
 
 	return (
 		<>
@@ -62,18 +79,44 @@ export default function Exercise() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<h1>Exercise {exerciseLength + 1}</h1>
-			<SetExerciseName setName={setExerciseConstructor} defaultName={exerciseConstructor.name} />
-			<CompletedSetsList data={exerciseConstructor.sets} exerciseSets={setExerciseConstructor} />
-
-			{exerciseConstructor.name && (
-				<AddExerciseSet
-					exerciseSetLength={exerciseConstructor.sets.length}
-					exerciseSets={setExerciseConstructor}
+			<WrapperContainer variant="overflow">
+				<Heading
+					variant="plain"
+					onClick={handleClearName}
+					text={hasExerciseName ? exerciseConstructor.name : "select exercise"}
+					secondaryText={hasVolume}
 				/>
-			)}
-			{!ensureData && (
-				<Button onClick={pushToWorkout} fullw text={`finish ${exerciseConstructor.name}`} />
+				<AnimatePresence mode="wait">
+					{hasExerciseName ? (
+						<CompletedSetsList
+							key="sets"
+							data={exerciseConstructor.sets}
+							exerciseSets={setExerciseConstructor}
+						/>
+					) : (
+						<>
+							<SearchExercise
+								key="search"
+								possibleNames={EXERCISELIST}
+								setName={setExerciseConstructor}
+								defaultName={exerciseConstructor.name}
+							/>
+							<p>Add new</p>
+						</>
+					)}
+				</AnimatePresence>
+			</WrapperContainer>
+			{hasExerciseName && (
+				<WrapperContainer variant="pinned">
+					<AnimatePresence>
+						{hasExerciseName && (
+							<AddExerciseSet key="add-sets" exerciseSets={setExerciseConstructor} />
+						)}
+						{hasExerciseSets && (
+							<SlideButton key="slide-button" onDragEnd={pushToWorkout} text="slide to finish" />
+						)}
+					</AnimatePresence>
+				</WrapperContainer>
 			)}
 		</>
 	);
