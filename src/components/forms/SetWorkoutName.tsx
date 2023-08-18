@@ -39,7 +39,7 @@ const SetWorkoutName = () => {
 						showDialog={true}
 						showCloseBtnCondition={true}
 						hasOtherEvent={() => handleSetName()}
-						text="Add a custom exercise"
+						text="Let's get started."
 					>
 						<Container>
 							<div>
