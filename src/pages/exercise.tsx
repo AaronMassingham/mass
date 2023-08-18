@@ -19,14 +19,20 @@ import { Exercise, Workout } from "@typescriptTypes/workoutTypes";
 
 //Constants
 import { EXERCISELIST } from "@constants/Exercises";
+import AddCustomExercise from "@components/forms/AddCustomExercise";
+import { Hydrated } from "@typescriptTypes/miscTypes";
 
-export default function Exercise() {
+type Props = {
+	isHydrated: Hydrated;
+};
+
+export default function Exercise({ isHydrated }: Props) {
 	const router = useRouter();
 	const { workoutState, setWorkoutState } = useWorkoutContext();
 
 	const [exerciseConstructor, setExerciseConstructor] = useState<Exercise>({
 		name: "",
-		exerciseId: "",
+		exercise_id: "",
 		volume: null,
 		perceivedEffort: null,
 		sets: [],
@@ -44,7 +50,7 @@ export default function Exercise() {
 				...prevState.exercises,
 				{
 					name: exerciseConstructor.name,
-					exerciseId: exerciseConstructor.name,
+					exercise_id: exerciseConstructor.name,
 					perceivedEffort: null,
 					sets: exerciseConstructor.sets,
 					volume: calculateVolume,
@@ -94,30 +100,28 @@ export default function Exercise() {
 							exerciseSets={setExerciseConstructor}
 						/>
 					) : (
-						<>
-							<SearchExercise
-								key="search"
-								possibleNames={EXERCISELIST}
-								setName={setExerciseConstructor}
-								defaultName={exerciseConstructor.name}
-							/>
-							<p>Add new</p>
-						</>
+						<SearchExercise
+							key="search"
+							possibleNames={EXERCISELIST}
+							setName={setExerciseConstructor}
+							defaultName={exerciseConstructor.name}
+						/>
 					)}
 				</AnimatePresence>
 			</WrapperContainer>
-			{hasExerciseName && (
-				<WrapperContainer variant="pinned">
-					<AnimatePresence>
-						{hasExerciseName && (
-							<AddExerciseSet key="add-sets" exerciseSets={setExerciseConstructor} />
-						)}
-						{hasExerciseSets && (
-							<SlideButton key="slide-button" onDragEnd={pushToWorkout} text="slide to finish" />
-						)}
-					</AnimatePresence>
-				</WrapperContainer>
-			)}
+
+			<WrapperContainer variant="pinned">
+				<AnimatePresence>
+					{hasExerciseName ? (
+						<AddExerciseSet key="add-sets" exerciseSets={setExerciseConstructor} />
+					) : (
+						<AddCustomExercise />
+					)}
+					{hasExerciseSets && (
+						<SlideButton key="slide-button" onDragEnd={pushToWorkout} text="slide to finish" />
+					)}
+				</AnimatePresence>
+			</WrapperContainer>
 		</>
 	);
 }

@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, MouseEvent, Dispatch } from "react";
+import React, { useState, ChangeEvent, MouseEvent, Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { v4 as uuidv4 } from "uuid";
@@ -14,7 +14,7 @@ import { validateNumberValue } from "@helpers/validationHelpers";
 import { genericFadeOutVariants } from "@constants/FramerVariants";
 
 type Props = {
-	exerciseSets: Dispatch<React.SetStateAction<any | null>>;
+	exerciseSets: Dispatch<SetStateAction<any | null>>;
 };
 
 const AddExerciseSet = ({ exerciseSets }: Props) => {
@@ -52,7 +52,7 @@ const AddExerciseSet = ({ exerciseSets }: Props) => {
 			sets: [
 				...prevState.sets,
 				{
-					id: uuidv4(),
+					set_id: uuidv4(),
 					weight: weight,
 					repetitions: reps,
 				},

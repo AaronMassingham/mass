@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
@@ -20,6 +20,9 @@ import Plus from "@components/icons/Plus";
 import SlideButton from "@components/buttons/SlideButton";
 import Dialog from "@components/Dialog";
 
+import NoData from "@components/data-display/NoData";
+import StartLifting from "@components/icons/StartLifting";
+
 type Props = {
 	isHydrated: Hydrated;
 };
@@ -29,6 +32,9 @@ export default function Workout({ isHydrated }: Props) {
 
 	const { workoutState, setWorkoutState } = useWorkoutContext();
 	const [completedExercises, setCompletedExercises] = useState([]);
+
+	const hasExercises = workoutState.exercises.length >= 1;
+	const hasWorkoutName = workoutState.name !== null;
 
 	const uploadWorkout = () => {
 		if (hasWorkoutName) {
@@ -44,9 +50,6 @@ export default function Workout({ isHydrated }: Props) {
 		}
 	};
 
-	const hasExercises = workoutState.exercises.length >= 1;
-	const hasWorkoutName = workoutState.name !== null;
-
 	return (
 		isHydrated && (
 			<>
@@ -56,10 +59,10 @@ export default function Workout({ isHydrated }: Props) {
 					<meta name="viewport" content="width=device-width, initial-scale=1" />
 					<link rel="icon" href="/favicon.ico" />
 				</Head>
+				<SetWorkoutName />
 
 				<WrapperContainer variant="overflow">
-					{!hasWorkoutName && <SetWorkoutName />}
-					{hasExercises && <ExerciseList />}
+					<ExerciseList />
 				</WrapperContainer>
 
 				<WrapperContainer variant="pinned">

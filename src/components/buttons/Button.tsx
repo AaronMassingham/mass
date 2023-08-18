@@ -29,8 +29,9 @@ interface IButton {
 
 const ButtonElement = styled.button<IButton>`
 	position: relative;
-	display: flex;
+	width:3rem;
 	height: 3rem;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size: initial;
@@ -39,12 +40,33 @@ const ButtonElement = styled.button<IButton>`
 	color: var(--gray900);
 	background-color: white;
 	cursor: pointer;
-	${(props) => (props.$fixWidth ? null : " width:3rem;")}
-	${(props) => (props.$fill ? "width:100%;" : null)}
 	&:disabled,
 	&[disabled] {
+		background-color: var(--gray800);
+		cursor: initial;
 	}
-	transition: opacity 0.2s ease;
+	transition: background-color 0.5s ease;
+	&:before,
+	&:after {
+		content: "";
+		position: absolute;
+		width: 150%;
+		height: 150%;
+		border-radius: 100%;
+		background: var(--gray800);
+		z-index: -1;
+	}
+	&:after {
+		background: linear-gradient(
+			90deg,
+			rgba(255, 125, 42, 1) 0%,
+			rgba(255, 42, 72, 1) 50%,
+			rgba(255, 125, 42, 1) 100%
+		);
+		z-index: -2;
+		transform: translateY(2px);
+	}
+}
 `;
 
 Button.displayName = "Button";

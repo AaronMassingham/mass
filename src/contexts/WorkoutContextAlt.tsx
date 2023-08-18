@@ -21,7 +21,8 @@ type Props = {
 };
 
 const initialWorkoutState: Workout = {
-	workoutId: null,
+	workout_id: null,
+	user_id: null,
 	name: null,
 	timestamp: null,
 	exercises: [],

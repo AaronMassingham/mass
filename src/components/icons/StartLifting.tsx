@@ -1,5 +1,3 @@
-import React from "react";
-
 const StartLifting = () => {
 	return (
 		<svg viewBox="0 0 553.7 564.1">

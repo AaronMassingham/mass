@@ -24,7 +24,7 @@ const CompletedSetsList = ({ data, exerciseSets }: Props) => {
 	const handleSetDelete = (setId: number) => {
 		exerciseSets((prevState) => ({
 			...prevState,
-			sets: prevState.sets.filter((set) => set.id !== setId),
+			sets: prevState.sets.filter((set) => set.set_id !== setId),
 		}));
 	};
 
@@ -39,7 +39,7 @@ const CompletedSetsList = ({ data, exerciseSets }: Props) => {
 							{data.map((set, index) => (
 								<motion.div
 									layout
-									key={set.id.toString()}
+									key={set.set_id.toString()}
 									style={{ height: "20%", display: "flex" }}
 									transition={{
 										layout: {
@@ -49,12 +49,12 @@ const CompletedSetsList = ({ data, exerciseSets }: Props) => {
 									{...listItemVariant}
 								>
 									<CompletedSetsListItem
-										setId={set.id}
+										set_id={set.set_id}
 										weight={set.weight}
 										repetitions={set.repetitions}
 										setNumber={index + 1}
 									>
-										<button onClick={() => handleSetDelete(set.id)}>
+										<button onClick={() => handleSetDelete(set.set_id)}>
 											<Trash />
 										</button>
 									</CompletedSetsListItem>

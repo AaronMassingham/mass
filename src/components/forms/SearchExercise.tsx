@@ -31,8 +31,6 @@ const SearchExercise = ({ setName, possibleNames }: Props) => {
 		}));
 	};
 
-	console.log(searchTerm);
-
 	return (
 		<Container {...genericFadeOutVariants}>
 			<Input
@@ -70,13 +68,14 @@ const Container = styled(motion.div)`
 		height: -webkit-fill-available;
 		overflow-y: scroll;
 		scrollbar-width: none;
+
 		&::-webkit-scrollbar {
 			display: none;
 		}
 		& > li {
 			height: 4rem;
 			display: grid;
-			place-items: center start;
+			place-items: center;
 			border-bottom: 1px solid var(--gray700);
 			cursor: pointer;
 		}

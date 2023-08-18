@@ -23,6 +23,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
 					<Component isHydrated={isHydrated} {...pageProps} />
 				</motion.div>
 			</AnimatePresence>
+			{isHydrated && <div id="modal-container" />}
 		</AppLayout>
 	);
 }
