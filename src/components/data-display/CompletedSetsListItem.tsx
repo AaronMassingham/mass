@@ -5,10 +5,10 @@ import styled from "styled-components";
 import Times from "@components/icons/Times";
 
 type Props = {
-	setNumber: number;
+	set_id: number;
 	weight: number;
 	repetitions: number;
-	setId: number;
+	setNumber: number;
 	children: ReactNode;
 };
 

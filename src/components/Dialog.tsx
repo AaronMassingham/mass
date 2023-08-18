@@ -1,44 +1,80 @@
-import { useState } from "react";
+import { useEffect, useState, MouseEvent } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import reactDom from "react-dom";
 import styled from "styled-components";
 import Times from "./icons/Times";
 import Button from "./buttons/Button";
+
+//Types
 
 type SecondaryHandlerType = () => void;
 
 type Props = {
 	children: React.ReactNode;
 	showCloseBtnCondition: boolean;
-	text: string;
+	showDialog: boolean;
+	text?: string;
+	smallText?: string;
 	hasOtherEvent?: SecondaryHandlerType;
 };
 
-const Dialog = ({ children, showCloseBtnCondition, text, hasOtherEvent }: Props) => {
-	const [dialog, setDialog] = useState(true);
+const Dialog = ({
+	children,
+	showCloseBtnCondition,
+	text,
+	smallText,
+	showDialog,
+	hasOtherEvent,
+}: Props) => {
+	const [dialog] = useState(showDialog);
 
-	const clickHandler = () => {
+	const clickHandler = (e: MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
 		hasOtherEvent && hasOtherEvent();
-		// setDialog(false);
 	};
 
-	return (
-		dialog && (
-			<Container>
-				<div>
-					<ButtonContainer>
-						{showCloseBtnCondition && (
-							<Button onClick={clickHandler} text={<Times fillColor="var(--gray900)" />} />
-						)}
-					</ButtonContainer>
+	console.log(showDialog);
 
-					<h2>{text}</h2>
-					{children}
-				</div>
-			</Container>
-		)
+	const content = dialog && (
+		<Container initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+			<motion.div layout="preserve-aspect">
+				{text && <h2>{text}</h2>}
+				{smallText && <p>{smallText}</p>}
+				{children}
+				<AnimatePresence>
+					{showCloseBtnCondition && (
+						<ButtonContainer>
+							<motion.div
+								initial={{ opacity: 0, y: 10 }}
+								animate={{ opacity: 1, y: 0 }}
+								exit={{ opacity: 0, y: 10 }}
+								transition={{ delay: 0.25 }}
+							>
+								<Button
+									onClick={clickHandler}
+									text={<Times isRotated fillColor="var(--gray900)" />}
+								/>
+							</motion.div>
+						</ButtonContainer>
+					)}
+				</AnimatePresence>
+			</motion.div>
+		</Container>
 	);
+
+	if (typeof window === "object") {
+		const modalContainer = document.getElementById("modal-container");
+
+		if (!modalContainer) {
+			return null;
+		}
+
+		return reactDom.createPortal(content, modalContainer as HTMLElement);
+	}
+	return null;
 };
 
-const Container = styled.div`
+const Container = styled(motion.div)`
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -47,11 +83,18 @@ const Container = styled.div`
 	z-index: 9999;
 	padding: 2rem;
 	display: grid;
-	background: rgba(var(--gray900Grad), 0.4);
+	background: rgba(var(--gray900Grad), 0.8);
 	place-items: center;
-	backdrop-filter: blur(2px);
+	backdrop-filter: blur(5px);
+	& p {
+		text-align: center;
+		text-transform: initial;
+		opacity: 0.6;
+		max-width: 250px;
+	}
 	& > div {
 		display: grid;
+		place-items: center;
 		gap: 2rem;
 		position: relative;
 		z-index: 2;
@@ -76,7 +119,7 @@ const Container = styled.div`
 	}
 `;
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled(motion.div)`
 	position: absolute;
 	z-index: 999999;
 	bottom: -0.5rem;
@@ -85,7 +128,7 @@ const ButtonContainer = styled.div`
 	height: 3rem;
 	display: grid;
 	place-items: center;
-	& > button {
+	& button {
 		position: relative;
 		&:before,
 		&:after {

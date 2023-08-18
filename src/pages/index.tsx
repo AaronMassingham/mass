@@ -1,4 +1,3 @@
-import React, { useContext, useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
@@ -28,10 +27,10 @@ export default function Home({ isHydrated }: Props) {
 	const { workoutState, setWorkoutState } = useWorkoutContext();
 
 	const setWorkoutIdentity = () => {
-		if (!isHydrated || workoutState.workoutId == null) {
+		if (!isHydrated || workoutState.workout_id == null) {
 			setWorkoutState((prevState) => ({
 				...prevState,
-				workoutId: uuidv4(),
+				workout_id: uuidv4(),
 				timestamp: Date.now(),
 			}));
 		}
@@ -58,7 +57,7 @@ export default function Home({ isHydrated }: Props) {
 					<Link href="/workout" onClick={setWorkoutIdentity}>
 						<FancyButton
 							icon={<Muscle />}
-							text={workoutState.workoutId == null ? "start" : "continue"}
+							text={workoutState.workout_id == null ? "start" : "continue"}
 						/>
 					</Link>
 				</WrapperContainer>

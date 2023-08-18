@@ -1,4 +1,5 @@
-import React, { useContext, useState, ChangeEvent, MouseEvent } from "react";
+import React, { useState, ChangeEvent } from "react";
+import { AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
@@ -10,6 +11,7 @@ import { Workout } from "@typescriptTypes/workoutTypes";
 
 //Components
 import Input from "@components/form-elements/Input";
+import Dialog from "@components/Dialog";
 
 const SetWorkoutName = () => {
 	const router = useRouter();
@@ -22,33 +24,38 @@ const SetWorkoutName = () => {
 		setWorkoutName(value.toLowerCase());
 	};
 
-	const dothething = (e: MouseEvent<HTMLButtonElement>) => {
-		e.preventDefault();
+	const handleSetName = () => {
 		setWorkoutState((prevState: Workout) => ({
 			...prevState,
 			name: workoutName,
 		}));
+		router.push("/exercise");
 	};
-
-	// const handleKeyDown = (event: any) => {
-	// 	if (event.key === "Enter" && workoutState.name !== "") {
-	// 		router.push("/exercise");
-	// 	} else {
-	// 	}
-	// };
 	return (
-		<Container>
-			<Input
-				type="text"
-				name="name"
-				value={workoutName}
-				onChange={assignWorkoutName}
-				placeholder={workoutState.name ? workoutState.name : "Name your workout"}
-			/>
-			<button onClick={dothething} style={{ background: "red" }}>
-				Set
-			</button>
-		</Container>
+		<>
+			<AnimatePresence>
+				{!workoutState.name && (
+					<Dialog
+						showDialog={true}
+						showCloseBtnCondition={true}
+						hasOtherEvent={() => handleSetName()}
+						text="Add a custom exercise"
+					>
+						<Container>
+							<div>
+								<Input
+									type="text"
+									name="name"
+									value={workoutName}
+									onChange={assignWorkoutName}
+									placeholder={workoutState.name ? workoutState.name : "Name your workout"}
+								/>
+							</div>
+						</Container>
+					</Dialog>
+				)}
+			</AnimatePresence>
+		</>
 	);
 };
 
@@ -57,6 +64,19 @@ const Container = styled.div`
 	width: 100%;
 	display: flex;
 	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	position: relative;
+	& > div {
+		position: relative;
+		width: 100%;
+		text-align: center;
+		&:last-of-type {
+			padding-top: 1rem;
+			display: grid;
+			place-items: center;
+		}
+	}
 `;
 
 export default SetWorkoutName;

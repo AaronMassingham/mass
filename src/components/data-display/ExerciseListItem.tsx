@@ -29,7 +29,7 @@ const ExerciseListItem = ({ completedExercises, listRef }: Props) => {
 			<OverflowList>
 				<div>
 					{sets.map((set, index) => (
-						<ListItem key={set.id}>
+						<ListItem key={set.set_id}>
 							<div>{index + 1}</div>
 							{set.weight} <Times /> {set.repetitions}
 						</ListItem>

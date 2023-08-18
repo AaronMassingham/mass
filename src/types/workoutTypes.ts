@@ -1,18 +1,19 @@
 export type Workout = {
-	workoutId: null | string;
+	workout_id: null | string;
+	user_id: null | string;
 	name: null | string;
 	timestamp: null | number;
 	exercises: Exercise[];
 };
 export type Exercise = {
+	exercise_id: null | string;
 	name: string;
-	exerciseId: null | string;
 	volume: null | number;
 	perceivedEffort: null | number;
 	sets: Set[];
 };
 export type Set = {
-	id: number;
+	set_id: number;
 	weight: number;
 	repetitions: number;
 };
