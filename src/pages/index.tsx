@@ -40,10 +40,7 @@ export default function Home({ isHydrated }: Props) {
 		isHydrated && (
 			<>
 				<Head>
-					<title>Mass Work</title>
-					<meta name="description" content="Track your workouts" />
-					<meta name="viewport" content="width=device-width, initial-scale=1" />
-					<link rel="icon" href="/favicon.ico" />
+					<title>MASS WORKOUT TRACKER</title>
 				</Head>
 
 				<WrapperContainer variant="overflow">

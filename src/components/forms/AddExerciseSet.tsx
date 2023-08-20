@@ -66,39 +66,37 @@ const AddExerciseSet = ({ exerciseSets }: Props) => {
 	};
 
 	return (
-		<>
-			<Container layout {...genericFadeOutVariants}>
-				<Seperator direction="up" />
-				<div>
-					<Input
-						tag="kg"
-						type="number"
-						pattern="[0-9]*\.?[0-9]+"
-						name="weight"
-						value={weight || ""}
-						placeholder="Weight"
-						onChange={handleChangeSetDataValue}
-					/>
+		<Container layout {...genericFadeOutVariants}>
+			<Seperator direction="up" />
+			<div>
+				<Input
+					tag="kg"
+					type="number"
+					pattern="[0-9]*\.?[0-9]+"
+					name="weight"
+					value={weight || ""}
+					placeholder="Weight"
+					onChange={handleChangeSetDataValue}
+				/>
 
-					<Input
-						tag="reps"
-						type="number"
-						pattern="[0-9]*\.?[0-9]+"
-						name="repetitions"
-						value={reps || ""}
-						placeholder="Reps"
-						onChange={handleChangeSetDataValue}
-					/>
-				</div>
-				<div>
-					<Button
-						isLoading={checkForValues}
-						onClick={handleAppendExerciseSet}
-						text={<Times isRotated fillColor="var(--gray900)" />}
-					/>
-				</div>
-			</Container>
-		</>
+				<Input
+					tag="reps"
+					type="number"
+					pattern="[0-9]*\.?[0-9]+"
+					name="repetitions"
+					value={reps || ""}
+					placeholder="Reps"
+					onChange={handleChangeSetDataValue}
+				/>
+			</div>
+			<div>
+				<Button
+					isLoading={checkForValues}
+					onClick={handleAppendExerciseSet}
+					text={<Times isRotated fillColor="var(--gray900)" />}
+				/>
+			</div>
+		</Container>
 	);
 };
 
@@ -106,6 +104,7 @@ const Container = styled(motion.form)`
 	width: calc(100% + 4rem);
 	padding: 0 2rem;
 	height: auto;
+	min-height: 120px;
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;

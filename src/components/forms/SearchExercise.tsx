@@ -21,7 +21,7 @@ const SearchExercise = ({ setName, possibleNames }: Props) => {
 		name.toLowerCase().includes(searchTerm.toLowerCase())
 	);
 
-	const handleNameChange = (name: string) => {
+	const handleSetExerciseName = (name: string) => {
 		setTimeout(() => {
 			setSearchTerm("");
 		}, 300);
@@ -42,7 +42,7 @@ const SearchExercise = ({ setName, possibleNames }: Props) => {
 			<div>
 				<motion.ul>
 					{filteredNames.map((name) => (
-						<motion.li layout key={name} onClick={() => handleNameChange(name)}>
+						<motion.li layout key={name} onClick={() => handleSetExerciseName(name)}>
 							{name}
 						</motion.li>
 					))}
@@ -56,7 +56,7 @@ const Container = styled(motion.div)`
 	height: -webkit-fill-available;
 	& > div:last-of-type {
 		position: relative;
-		height: calc(100% - 7rem);
+		height: calc(100% - 4rem);
 	}
 
 	& ul {

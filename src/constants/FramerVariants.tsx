@@ -77,8 +77,7 @@ export const pinnedButtonVariants: MotionProps = {
 			y: 20,
 			opacity: 0,
 			transition: {
-				type: "inertia",
-				velocity: 20,
+				ease: "easeOut",
 				opacity: {
 					duration: 0.5,
 				},
@@ -88,8 +87,7 @@ export const pinnedButtonVariants: MotionProps = {
 			y: 0,
 			opacity: 1,
 			transition: {
-				type: "inertia",
-				velocity: -20,
+				ease: "easeOut",
 				opacity: {
 					duration: 0.5,
 				},
@@ -100,6 +98,7 @@ export const pinnedButtonVariants: MotionProps = {
 
 export const rotatingTextAnimation: MotionProps = {
 	animate: "visible",
+
 	variants: {
 		visible: {
 			rotate: [0, -360],

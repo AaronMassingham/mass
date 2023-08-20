@@ -48,11 +48,7 @@ const AddCustomExercise = () => {
 		<>
 			<Container layout {...genericFadeOutVariants}>
 				<Seperator direction="up" />
-				<div>
-					Exercise not listed?
-					<br />
-					<small>Add your own!</small>
-				</div>
+				<div>Add New</div>
 
 				<Button onClick={handleClick} text={<Times isRotated fillColor="var(--gray900)" />} />
 			</Container>
@@ -73,25 +69,24 @@ const AddCustomExercise = () => {
 };
 
 const Container = styled(motion.form)`
-	position: relative;
-	z-index: 1;
-	height: 100%;
 	width: calc(100% + 4rem);
 	padding: 0 2rem;
-	margin-bottom: -2rem;
+	height: auto;
+	min-height: 120px;
 	display: flex;
-
+	flex-wrap: wrap;
 	flex-direction: column;
 	align-items: center;
-	gap: 2rem;
+	position: relative;
 	background: var(--gray800);
+	z-index: 1;
 	&:before,
 	&:after {
 		position: absolute;
 		z-index: 8;
 		width: 2rem;
 		height: 2rem;
-		bottom: 2rem;
+		bottom: -2rem;
 		left: 0;
 		content: "";
 		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' viewBox='0 0 65 65'%3E%3Cpath fill='%23111111' d='M0 65A65 65 0 0 1 65 0v-2H-2v67h2z'/%3E%3C/svg%3E");
@@ -101,12 +96,20 @@ const Container = styled(motion.form)`
 		right: 0;
 		transform: rotate(90deg);
 	}
-
 	& > div {
 		width: 100%;
-		text-align: center;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		gap: 4rem;
+		&:last-of-type {
+			transform: translateY(1rem);
+			max-width: 70%;
+			margin: auto;
+			position: relative;
+			z-index: 5;
+		}
 	}
-
 	& button {
 		position: relative;
 

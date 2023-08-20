@@ -1,4 +1,4 @@
-const StartLifting = () => {
+const StartLiftingImage = () => {
 	return (
 		<svg viewBox="0 0 553.7 564.1">
 			<path
@@ -9,4 +9,4 @@ const StartLifting = () => {
 	);
 };
 
-export default StartLifting;
+export default StartLiftingImage;

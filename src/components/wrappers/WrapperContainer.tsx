@@ -39,7 +39,6 @@ const Container = styled(motion.div)<StyleProps>`
 				`;
 			case "pinned":
 				return css`
-					background: red;
 					position: sticky;
 					z-index: 3;
 					bottom: 0;
@@ -47,7 +46,6 @@ const Container = styled(motion.div)<StyleProps>`
 					right: 0;
 					height: 220px;
 					padding-bottom: var(--padding);
-
 					margin-bottom: -1rem;
 					background-color: var(--gray900);
 					display: flex;
