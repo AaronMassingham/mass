@@ -26,8 +26,8 @@ const SlideButton = ({ onDragEnd, text }: SlideButtonProps) => {
 	}
 
 	return (
-		<Container layout key="slide-button" {...pinnedButtonVariants}>
-			<div>
+		<Container key="slide-button" {...pinnedButtonVariants}>
+			<motion.div layout>
 				<motion.button
 					drag="x"
 					dragConstraints={{ left: 0, right: 0 }}
@@ -37,7 +37,7 @@ const SlideButton = ({ onDragEnd, text }: SlideButtonProps) => {
 				>
 					{text}
 				</motion.button>
-			</div>
+			</motion.div>
 		</Container>
 	);
 };

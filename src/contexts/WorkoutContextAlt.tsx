@@ -14,7 +14,7 @@ interface WorkoutContextValue {
 	setWorkoutState: Dispatch<SetStateAction<Workout>>;
 }
 
-const MyContext = createContext<WorkoutContextValue | undefined>(undefined);
+const workoutContext = createContext<WorkoutContextValue | undefined>(undefined);
 
 type Props = {
 	children: ReactNode;
@@ -47,11 +47,11 @@ function WorkoutProvider({ children }: Props) {
 		setWorkoutState,
 	};
 
-	return <MyContext.Provider value={contextValue}>{children}</MyContext.Provider>;
+	return <workoutContext.Provider value={contextValue}>{children}</workoutContext.Provider>;
 }
 
 function useWorkoutContext() {
-	const context = useContext(MyContext);
+	const context = useContext(workoutContext);
 	if (context === undefined) {
 		throw new Error("useWorkoutContext must be used within a WorkoutProvider");
 	}

@@ -13,7 +13,7 @@ import Trash from "@components/icons/Trash";
 //Constants
 import { genericFadeOutVariants, listItemVariant } from "@constants/FramerVariants";
 import ScrollableContainer from "@components/wrappers/ScrollableContainer";
-import StartLifting from "@components/icons/StartLifting";
+import StartLiftingImage from "@components/icons/StartLiftingImage";
 
 type Props = {
 	data: Set[];
@@ -62,7 +62,7 @@ const CompletedSetsList = ({ data, exerciseSets }: Props) => {
 							))}
 						</AnimatePresence>
 					) : (
-						<NoData type="image" key="error" hasIcon={<StartLifting />} />
+						<NoData type="image" key="error" hasIcon={<StartLiftingImage />} />
 					)}
 				</AnimatePresence>
 			</ScrollableContainer>

@@ -42,7 +42,7 @@ const ButtonElement = styled.button<IButton>`
 	cursor: pointer;
 	&:disabled,
 	&[disabled] {
-		background-color: var(--gray800);
+		background-color: var(--gray700);
 		cursor: initial;
 	}
 	transition: background-color 0.5s ease;

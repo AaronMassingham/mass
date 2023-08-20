@@ -34,26 +34,24 @@ const SetWorkoutName = () => {
 	return (
 		<>
 			<AnimatePresence>
-				{!workoutState.name && (
-					<Dialog
-						showDialog={true}
-						showCloseBtnCondition={true}
-						hasOtherEvent={() => handleSetName()}
-						text="Let's get started."
-					>
-						<Container>
-							<div>
-								<Input
-									type="text"
-									name="name"
-									value={workoutName}
-									onChange={assignWorkoutName}
-									placeholder={workoutState.name ? workoutState.name : "Name your workout"}
-								/>
-							</div>
-						</Container>
-					</Dialog>
-				)}
+				<Dialog
+					showDialog={true}
+					showCloseBtnCondition={true}
+					hasOtherEvent={() => handleSetName()}
+					text="Let's get started."
+				>
+					<Container>
+						<div>
+							<Input
+								type="text"
+								name="name"
+								value={workoutName}
+								onChange={assignWorkoutName}
+								placeholder={workoutState.name ? workoutState.name : "Name your workout"}
+							/>
+						</div>
+					</Container>
+				</Dialog>
 			</AnimatePresence>
 		</>
 	);

@@ -17,12 +17,12 @@ const PreviousWorkouts = ({ data }: Props) => {
 			{data ? (
 				data.map(({ title, date, vol }, index) => (
 					<WorkoutListItem key={index}>
-						<span>{date}</span>
+						<h2>{title}</h2>
 						<div>
-							<span>{title}</span>
 							<span>
 								<strong>Vol</strong> {vol}kg
 							</span>
+							<span>{date}</span>
 						</div>
 					</WorkoutListItem>
 				))
@@ -46,14 +46,17 @@ const WorkoutListItem = styled.div`
 	&:last-of-type {
 		border: 0;
 	}
-	& > span {
-		color: var(--gray700);
+	& span {
+		font-size: 0.8rem;
 	}
 	& > div {
 		color: white;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		& > *:first-child {
+			color: var(--brand500);
+		}
 	}
 `;
 const Container = styled.div``;
