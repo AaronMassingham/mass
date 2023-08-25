@@ -14,11 +14,16 @@ import AddCustomExercise from "@components/forms/AddCustomExercise";
 import { EXERCISELIST } from "@constants/Exercises";
 
 //Hooks
-import { useWorkoutHandlers } from "@hooks/useWorkoutHandlers";
+import { useExerciseConstructorHandlers } from "@hooks/useExerciseConstructorHandlers";
 
 export default function Exercise() {
-	const { exerciseConstructor, setExerciseConstructor, volume, pushToWorkout, handleClearName } =
-		useWorkoutHandlers();
+	const {
+		exerciseConstructor,
+		volume,
+		setExerciseConstructor,
+		appendExerciseToWorkout,
+		clearExerciseName,
+	} = useExerciseConstructorHandlers();
 
 	const hasVolume = volume !== 0 && (
 		<>
@@ -36,7 +41,7 @@ export default function Exercise() {
 			<WrapperContainer variant="overflow">
 				<Heading
 					variant="plain"
-					onClick={handleClearName}
+					onClick={clearExerciseName}
 					text={hasExerciseName ? exerciseConstructor.name : "select exercise"}
 					secondaryText={hasVolume}
 				/>
@@ -66,7 +71,11 @@ export default function Exercise() {
 						<AddCustomExercise key="testt-too" />
 					)}
 					{hasExerciseSets && (
-						<SlideButton key="slide-button" onDragEnd={pushToWorkout} text="slide to finish" />
+						<SlideButton
+							key="slide-button"
+							onDragEnd={appendExerciseToWorkout}
+							text="slide to finish"
+						/>
 					)}
 				</AnimatePresence>
 			</WrapperContainer>

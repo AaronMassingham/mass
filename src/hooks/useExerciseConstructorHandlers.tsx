@@ -6,7 +6,7 @@ import { calculateVolume } from "@helpers/calculationHelpers";
 import { useWorkoutContext } from "@contexts/WorkoutContextAlt";
 import { useRouter } from "next/router";
 
-export function useWorkoutHandlers() {
+export function useExerciseConstructorHandlers() {
 	const router = useRouter();
 	const { workoutState, setWorkoutState } = useWorkoutContext();
 	const [exerciseConstructor, setExerciseConstructor] = useState<Exercise>({
@@ -19,7 +19,7 @@ export function useWorkoutHandlers() {
 
 	const volume = calculateVolume(exerciseConstructor.sets);
 
-	const pushToWorkout = () => {
+	const appendExerciseToWorkout = () => {
 		setWorkoutState((prevState: Workout) => ({
 			...prevState,
 			exercises: [
@@ -37,18 +37,19 @@ export function useWorkoutHandlers() {
 		localStorage.setItem("current-workout", JSON.stringify(workoutState));
 	};
 
-	const handleClearName = () => {
+	const clearExerciseName = () => {
 		setExerciseConstructor((prevState: Exercise) => ({
 			...prevState,
 			name: "",
 		}));
+		console.log("clicked");
 	};
 
 	return {
 		exerciseConstructor,
-		setExerciseConstructor,
 		volume,
-		pushToWorkout,
-		handleClearName,
+		clearExerciseName,
+		setExerciseConstructor,
+		appendExerciseToWorkout,
 	};
 }
