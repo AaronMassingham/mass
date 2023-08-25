@@ -1,10 +1,5 @@
-import React, { useState, MouseEvent } from "react";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { AnimatePresence } from "framer-motion";
-
-//Context
-import { useWorkoutContext } from "@contexts/WorkoutContextAlt";
 
 //Components
 import AddExerciseSet from "@components/forms/AddExerciseSet";
@@ -13,65 +8,25 @@ import CompletedSetsList from "@components/data-display/CompletedSetsList";
 import WrapperContainer from "@components/wrappers/WrapperContainer";
 import Heading from "@components/app/Heading";
 import SlideButton from "@components/buttons/SlideButton";
-
-//Types
-import { Exercise, Workout } from "@typescriptTypes/workoutTypes";
+import AddCustomExercise from "@components/forms/AddCustomExercise";
 
 //Constants
 import { EXERCISELIST } from "@constants/Exercises";
-import AddCustomExercise from "@components/forms/AddCustomExercise";
-import { Hydrated } from "@typescriptTypes/miscTypes";
+
+//Hooks
+import { useWorkoutHandlers } from "@hooks/useWorkoutHandlers";
 
 export default function Exercise() {
-	const router = useRouter();
-	const { workoutState, setWorkoutState } = useWorkoutContext();
+	const { exerciseConstructor, setExerciseConstructor, volume, pushToWorkout, handleClearName } =
+		useWorkoutHandlers();
 
-	const [exerciseConstructor, setExerciseConstructor] = useState<Exercise>({
-		name: "",
-		exercise_id: "",
-		volume: null,
-		perceivedEffort: null,
-		sets: [],
-	});
-
-	const calculateVolume = exerciseConstructor.sets.reduce(
-		(accumulator, { weight, repetitions }) => accumulator + weight * repetitions,
-		0
-	);
-
-	const pushToWorkout = () => {
-		setWorkoutState((prevState: Workout) => ({
-			...prevState,
-			exercises: [
-				...prevState.exercises,
-				{
-					name: exerciseConstructor.name,
-					exercise_id: exerciseConstructor.name,
-					perceivedEffort: null,
-					sets: exerciseConstructor.sets,
-					volume: calculateVolume,
-				},
-			],
-		}));
-		router.push("/workout");
-		localStorage.setItem("current-workout", JSON.stringify(workoutState));
-	};
-
-	const handleClearName = (e: MouseEvent<HTMLButtonElement>) => {
-		e.preventDefault();
-		setExerciseConstructor((prevState: Exercise) => ({
-			...prevState,
-			name: "",
-		}));
-	};
-
-	const hasExerciseName = exerciseConstructor.name !== "";
-	const hasExerciseSets = exerciseConstructor.sets.length !== 0;
-	const hasVolume = calculateVolume !== 0 && (
+	const hasVolume = volume !== 0 && (
 		<>
-			<strong>vol</strong> {calculateVolume.toString()} kg
+			<strong>vol</strong> {volume} kg
 		</>
 	);
+	const hasExerciseName = exerciseConstructor.name !== "";
+	const hasExerciseSets = exerciseConstructor.sets.length !== 0;
 
 	return (
 		<>
