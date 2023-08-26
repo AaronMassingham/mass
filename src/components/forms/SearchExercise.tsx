@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 //Types
-import { SearchExerciseType } from "@typescriptTypes/SearchTypes";
+import { SearchExerciseType } from "@typescriptTypes/SSearchTypes";
 
 //Helpers
 import { filterNamesBySearchTerm } from "@helpers/filterHelpers";
