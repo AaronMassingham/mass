@@ -16,7 +16,7 @@ import PreviousWorkouts from "@components/data-display/PreviousWorkouts";
 import WrapperContainer from "@components/wrappers/WrapperContainer";
 import Muscle from "@components/icons/Muscle";
 import FancyButton from "@components/buttons/FancyButton";
-import Heading from "@components/app/Heading";
+import Heading from "@components/header/Heading";
 import ScrollableContainer from "@components/wrappers/ScrollableContainer";
 
 type Props = {
@@ -36,6 +36,8 @@ export default function Home({ isHydrated }: Props) {
 		}
 	};
 
+	const checkWorkoutId = workoutState.workout_id == null ? "start" : "continue";
+
 	return (
 		isHydrated && (
 			<>
@@ -43,7 +45,7 @@ export default function Home({ isHydrated }: Props) {
 					<title>MASS WORKOUT TRACKER</title>
 				</Head>
 
-				<WrapperContainer variant="overflow">
+				<WrapperContainer variant="main">
 					<Heading variant="default" text="Recent Workouts" />
 					<ScrollableContainer>
 						<PreviousWorkouts data={PREVWORKOUTS} />
@@ -52,10 +54,7 @@ export default function Home({ isHydrated }: Props) {
 
 				<WrapperContainer variant="pinned">
 					<Link href="/workout" onClick={setWorkoutIdentity}>
-						<FancyButton
-							icon={<Muscle />}
-							text={workoutState.workout_id == null ? "start" : "continue"}
-						/>
+						<FancyButton icon={<Muscle />} text={checkWorkoutId} />
 					</Link>
 				</WrapperContainer>
 			</>

@@ -1,24 +1,8 @@
 import styled from "styled-components";
 
-type Props = {
-	direction: "up" | "down";
-};
+import { SeperatorProps } from "@typescriptTypes/StyledComponentTypes";
 
-const Seperator = ({ direction }: Props) => {
-	return (
-		<Container $direction={direction}>
-			<div>
-				<div />
-			</div>
-		</Container>
-	);
-};
-
-interface ContainerProps {
-	$direction: string;
-}
-
-const Container = styled.div<ContainerProps>`
+export const Container = styled.div<SeperatorProps>`
 	transform: ${(props) => props.$direction === "up" && "rotate(180deg)"};
 	& > div {
 		margin-top: 0;
@@ -42,5 +26,3 @@ const Container = styled.div<ContainerProps>`
 		}
 	}
 `;
-
-export default Seperator;

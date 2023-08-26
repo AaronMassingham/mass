@@ -7,7 +7,7 @@ import { StyleSheetManager } from "styled-components";
 import { useHydration } from "@hooks/useHydration";
 
 //Components
-import AppLayout from "@components/app/AppLayout";
+import AppLayout from "@components/layout/AppLayout";
 
 //Global Styles
 import "../styles/globals.css";

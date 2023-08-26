@@ -54,7 +54,7 @@ export default function Workout({ isHydrated }: Props) {
 					<title>MASS WORKOUT TRACKER</title>
 				</Head>
 
-				<WrapperContainer variant="overflow">
+				<WrapperContainer variant="main">
 					<ExerciseList />
 				</WrapperContainer>
 

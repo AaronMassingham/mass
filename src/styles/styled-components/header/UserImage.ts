@@ -1,27 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
 import styled from "styled-components";
+import { UserImageProps } from "@typescriptTypes/StyledComponentTypes";
 
-const UserImage = ({ children, width }: Props) => {
-	return (
-		<Link href="/profile">
-			<Container $width={width}>
-				<Image src="/test-profile.jpg" alt="Profile Image" fill sizes="120px" />
-				{children}
-			</Container>
-		</Link>
-	);
-};
-
-type Props = {
-	children?: React.ReactNode;
-	width: number;
-};
-interface ContainerProps {
-	$width: number;
-}
-
-const Container = styled.div<ContainerProps>`
+export const Container = styled.div<UserImageProps>`
 	width: ${(props) => props.$width && `${props.$width}rem`};
 	aspect-ratio: 1;
 	border-radius: 100%;
@@ -62,5 +42,3 @@ const Container = styled.div<ContainerProps>`
 		left: -10%;
 	}
 `;
-
-export default UserImage;

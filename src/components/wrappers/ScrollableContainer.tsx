@@ -1,10 +1,7 @@
 import React, { useRef, useEffect } from "react";
-import styled from "styled-components";
 
-type Props = {
-	children: React.ReactNode;
-	data?: any;
-};
+//Styled Components
+import { ScrollableContainer as Container } from "@styles/styled-components/wrappers/wrappers";
 
 const ScrollableContainer = ({ children, data }: Props) => {
 	const containerRef = useRef<HTMLDivElement | null>(null);
@@ -16,14 +13,8 @@ const ScrollableContainer = ({ children, data }: Props) => {
 	return <Container ref={containerRef}>{children}</Container>;
 };
 
-const Container = styled.div`
-	height: 100%;
-	overflow: scroll;
-	position: relative;
-	scrollbar-width: none;
-	&::-webkit-scrollbar {
-		display: none;
-	}
-`;
-
+type Props = {
+	children: React.ReactNode;
+	data?: any;
+};
 export default ScrollableContainer;

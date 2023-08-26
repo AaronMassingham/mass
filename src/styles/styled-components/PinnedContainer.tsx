@@ -1,7 +1,6 @@
-import styled from "styled-components";
 import { motion } from "framer-motion";
-
-export const DefaultPinnedContainerStyles = styled(motion.form)`
+import styled from "styled-components";
+export const Container = styled(motion.form)`
 	width: calc(100% + 4rem);
 	padding: 0 2rem;
 	height: auto;

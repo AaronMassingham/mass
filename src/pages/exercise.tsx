@@ -6,7 +6,7 @@ import AddExerciseSet from "@components/forms/AddExerciseSet";
 import SearchExercise from "@components/forms/SearchExercise";
 import CompletedSetsList from "@components/data-display/CompletedSetsList";
 import WrapperContainer from "@components/wrappers/WrapperContainer";
-import Heading from "@components/app/Heading";
+import Heading from "@components/header/Heading";
 import SlideButton from "@components/buttons/SlideButton";
 import AddCustomExercise from "@components/forms/AddCustomExercise";
 
@@ -18,8 +18,8 @@ import { useExerciseConstructorHandlers } from "@hooks/useExerciseConstructorHan
 
 export default function Exercise() {
 	const {
-		exerciseConstructor,
 		volume,
+		exerciseConstructor,
 		setExerciseConstructor,
 		appendExerciseToWorkout,
 		clearExerciseName,
@@ -38,33 +38,32 @@ export default function Exercise() {
 			<Head>
 				<title>MASS WORKOUT TRACKER</title>
 			</Head>
-			<WrapperContainer variant="overflow">
+			<WrapperContainer variant="main">
 				<Heading
 					variant="plain"
 					onClick={clearExerciseName}
 					text={hasExerciseName ? exerciseConstructor.name : "select exercise"}
 					secondaryText={hasVolume}
 				/>
-				<AnimatePresence mode="wait">
-					{hasExerciseName ? (
-						<CompletedSetsList
-							key="sets"
-							data={exerciseConstructor.sets}
-							exerciseSets={setExerciseConstructor}
-						/>
-					) : (
-						<SearchExercise
-							key="search"
-							possibleNames={EXERCISELIST}
-							setName={setExerciseConstructor}
-							defaultName={exerciseConstructor.name}
-						/>
-					)}
-				</AnimatePresence>
+
+				{hasExerciseName ? (
+					<CompletedSetsList
+						key="sets"
+						data={exerciseConstructor.sets}
+						exerciseSets={setExerciseConstructor}
+					/>
+				) : (
+					<SearchExercise
+						key="search"
+						possibleNames={EXERCISELIST}
+						setName={setExerciseConstructor}
+						defaultName={exerciseConstructor.name}
+					/>
+				)}
 			</WrapperContainer>
 
 			<WrapperContainer variant="pinned">
-				<AnimatePresence mode="wait">
+				<AnimatePresence>
 					{hasExerciseName ? (
 						<AddExerciseSet key="add-sets" exerciseSets={setExerciseConstructor} />
 					) : (

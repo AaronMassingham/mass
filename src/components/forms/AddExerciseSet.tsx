@@ -5,21 +5,20 @@ import { v4 as uuidv4 } from "uuid";
 import Input from "@components/form-elements/Input";
 import Times from "@components/icons/Times";
 import Button from "@components/buttons/Button";
-import Seperator from "@components/app/Seperator";
+import Seperator from "@components/misc/Seperator";
+
+//Constants
+import { genericFadeOutVariants } from "@constants/FramerVariants";
+import { REPVALUES, WEIGHTVALUES } from "@constants/InputValues";
 
 //Helpers
 import { checkForValidValues } from "@helpers/validationHelpers";
-import { genericFadeOutVariants } from "@constants/FramerVariants";
 
 //hooks
 import useExerciseSetState from "@hooks/useExerciseSetState";
 
 //styled Components
-import { DefaultPinnedContainerStyles as Container } from "@styles/Styles";
-
-type Props = {
-	exerciseSets: Dispatch<SetStateAction<any | null>>;
-};
+import { Container } from "@styles/styled-components/PinnedContainer";
 
 const AddExerciseSet = ({ exerciseSets }: Props) => {
 	const { currentSet, updateCurrentSet } = useExerciseSetState();
@@ -56,22 +55,14 @@ const AddExerciseSet = ({ exerciseSets }: Props) => {
 			<Seperator direction="up" />
 			<div>
 				<Input
-					tag="kg"
-					type="number"
-					pattern="[0-9]*\.?[0-9]+"
-					name="weight"
+					{...WEIGHTVALUES}
 					value={weight || ""}
-					placeholder="Weight"
 					onChange={(e) => updateCurrentSet("weight", parseFloat(e.target.value) || null)}
 				/>
 
 				<Input
-					tag="reps"
-					type="number"
-					pattern="[0-9]*\.?[0-9]+"
-					name="repetitions"
+					{...REPVALUES}
 					value={reps || ""}
-					placeholder="Reps"
 					onChange={(e) => updateCurrentSet("repetitions", parseFloat(e.target.value) || null)}
 				/>
 			</div>
@@ -84,6 +75,10 @@ const AddExerciseSet = ({ exerciseSets }: Props) => {
 			</div>
 		</Container>
 	);
+};
+
+type Props = {
+	exerciseSets: Dispatch<SetStateAction<any | null>>;
 };
 
 export default AddExerciseSet;
