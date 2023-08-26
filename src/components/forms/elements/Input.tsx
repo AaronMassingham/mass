@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 //Types
-import { InputElementType } from "@typescriptTypes/ComponentTypes";
+import { InputElementType } from "@typescriptTypes/CComponentTypes";
 
 //Styled Components
 import {

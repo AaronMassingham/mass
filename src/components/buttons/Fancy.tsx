@@ -2,7 +2,7 @@
 import RotatingText from "@components/buttons/RotatingText";
 
 //Types
-import { FancyButtonType } from "@typescriptTypes/ComponentTypes";
+import { FancyButtonType } from "@typescriptTypes/CComponentTypes";
 
 //Constants
 import { pinnedButtonVariants } from "@constants/FramerVariants";

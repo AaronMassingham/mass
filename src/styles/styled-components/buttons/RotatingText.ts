@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-import { SvgProps } from "@typescriptTypes/StyledComponentTypes";
+import { SvgProps } from "@typescriptTypes/SStyledComponentTypes";
 
 export const Container = styled(motion.div)`
 	height: 100%;

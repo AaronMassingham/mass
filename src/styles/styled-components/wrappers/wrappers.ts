@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 
-import { WrapperProps } from "@typescriptTypes/StyledComponentTypes";
+import { WrapperProps } from "@typescriptTypes/SStyledComponentTypes";
 
 export const ScrollableContainer = styled.div`
 	height: 100%;

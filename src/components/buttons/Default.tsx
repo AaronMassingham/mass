@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 
 //Types
-import { DefaultButtonType } from "@typescriptTypes/ComponentTypes";
+import { DefaultButtonType } from "@typescriptTypes/CComponentTypes";
 
 //Styled Components
 import { Container } from "@styles/styled-components/buttons/DefaultAlt";

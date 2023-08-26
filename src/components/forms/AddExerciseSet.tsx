@@ -21,7 +21,7 @@ import useExerciseSetState from "@hooks/useExerciseSetState";
 import { Container } from "@styles/styled-components/PinnedContainer";
 
 //Types
-import { AddExerciseSetType } from "@typescriptTypes/WorkoutTypes";
+import { AddExerciseSetType } from "@typescriptTypes/WWorkoutTypes";
 
 const AddExerciseSet = ({ exerciseSets }: AddExerciseSetType) => {
 	const { currentSet, updateCurrentSet } = useExerciseSetState();

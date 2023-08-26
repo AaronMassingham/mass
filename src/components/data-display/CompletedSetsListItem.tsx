@@ -2,7 +2,7 @@
 import Times from "@components/icons/Times";
 
 //Types
-import { CompletedSetsListItemType } from "@typescriptTypes/WorkoutTypes";
+import { CompletedSetsListItemType } from "@typescriptTypes/WWorkoutTypes";
 
 //Styled Components
 import { Container, Value } from "@styles/styled-components/data-display/CompletedSetsListItem";

@@ -9,7 +9,7 @@ import { useWorkoutContext } from "@contexts/WorkoutContext";
 import { PREVWORKOUTS } from "@constants/PreviousWorkoutsDummy";
 
 //Types
-import { Hydrated } from "@typescriptTypes/MiscTypes";
+import { Hydrated } from "@typescriptTypes/MMiscTypes";
 
 //Components
 import PreviousWorkouts from "@components/data-display/PreviousWorkouts";

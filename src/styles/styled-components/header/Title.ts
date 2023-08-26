@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
-import { TitleProps } from "@typescriptTypes/StyledComponentTypes";
+import { TitleProps } from "@typescriptTypes/SStyledComponentTypes";
 
 export const Container = styled(motion.div)<TitleProps>`
 	position: sticky;

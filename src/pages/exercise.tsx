@@ -11,7 +11,7 @@ import SlideButton from "@components/buttons/Slide";
 import AddCustomExercise from "@components/forms/AddCustomExercise";
 
 //Types
-import { Hydrated } from "@typescriptTypes/MiscTypes";
+import { Hydrated } from "@typescriptTypes/MMiscTypes";
 
 //Constants
 import { EXERCISELIST } from "@constants/Exercises";

@@ -2,7 +2,7 @@
 import { Inter } from "next/font/google";
 
 //Types
-import { ChildrenProps } from "@typescriptTypes/MiscTypes";
+import { ChildrenProps } from "@typescriptTypes/MMiscTypes";
 
 //Contexts
 import { WorkoutProvider } from "@contexts/WorkoutContext";

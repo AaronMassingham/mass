@@ -2,7 +2,7 @@
 import { fadeInOutVariants } from "@constants/FramerVariants";
 
 //Types
-import { NoDataType } from "@typescriptTypes/ComponentTypes";
+import { NoDataType } from "@typescriptTypes/CComponentTypes";
 
 //Styled Components
 import { Container } from "@styles/styled-components/data-display/NoData";

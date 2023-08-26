@@ -2,7 +2,7 @@
 import { Container } from "@styles/styled-components/misc/Seperator";
 
 //Types
-import { SeperatorType } from "@typescriptTypes/ComponentTypes";
+import { SeperatorType } from "@typescriptTypes/CComponentTypes";
 
 const Seperator = ({ direction }: SeperatorType) => {
 	return (

@@ -2,7 +2,7 @@
 import { LayoutContainer as Container } from "@styles/styled-components/wrappers/Wrappers";
 
 //Types
-import { WrapperType } from "@typescriptTypes/ComponentTypes";
+import { WrapperType } from "@typescriptTypes/CComponentTypes";
 
 const WrapperContainer = ({ children, variant, hasSibling }: WrapperType) => {
 	return (
