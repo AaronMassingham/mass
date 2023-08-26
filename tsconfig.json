@@ -18,30 +18,34 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": "./src",
     "paths": {
       "@styles/*": [
-        "./src/styles/*"
+        "./styles/*"
       ],
       "@components/*": [
-        "./src/components/*"
+        "./components/*"
+      ],
+      "@components/": [
+        "./components/"
       ],
       "@hooks/*": [
-        "./src/lib/hooks/*"
+        "./lib/hooks/*"
       ],
       "@constants/*": [
-        "./src/lib/constants/*"
+        "./lib/constants/*"
       ],
       "@contexts/*": [
-        "./src/lib/contexts/*"
+        "./lib/contexts/*"
       ],
       "@helpers/*": [
-        "./src/lib/helpers/*"
+        "./lib/helpers/*"
       ],
       "@utils/*": [
-        "./src/lib/utils/*"
+        "./lib/utils/*"
       ],
       "@typescriptTypes/*": [
-        "./src/types/*"
+        "./types/*"
       ],
     }
   },
