@@ -7,17 +7,9 @@ import { DefaultButtonType } from "@typescriptTypes/componentTypes";
 import { Container } from "@styles/styled-components/buttons/Default";
 
 const DefaultButton = forwardRef<HTMLButtonElement, DefaultButtonType>(
-	({ onClick, isLoading, text, fullw, buttonType }, ref) => {
-		const typeIsString = typeof text === "string";
+	({ onClick, isLoading, text, buttonType }, ref) => {
 		return (
-			<Container
-				$fixWidth={typeIsString}
-				$fill={fullw}
-				disabled={isLoading}
-				onClick={onClick}
-				ref={ref}
-				type={buttonType}
-			>
+			<Container disabled={isLoading} onClick={onClick} ref={ref} type={buttonType}>
 				{text}
 			</Container>
 		);
