@@ -1,5 +1,3 @@
-import styled from "styled-components";
-
 //Fonts
 import { Inter } from "next/font/google";
 
@@ -7,7 +5,10 @@ import { Inter } from "next/font/google";
 import { WorkoutProvider } from "@contexts/WorkoutContextAlt";
 
 //Components
-import Header from "@components/app/Header";
+import Header from "@components/header/Header";
+
+//Styled Components
+import { Container } from "@styles/styled-components/layout/AppLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,11 +26,5 @@ const AppLayout = ({ children }: Props) => {
 type Props = {
 	children: React.ReactNode;
 };
-
-const Container = styled.div`
-	display: flex;
-	flex-direction: column;
-	height: 100svh;
-`;
 
 export default AppLayout;

@@ -1,10 +1,11 @@
 import React, { ReactNode } from "react";
-import styled from "styled-components";
-import { motion } from "framer-motion";
-import RotatingText from "@components/RotatingText";
+import RotatingText from "@components/buttons/RotatingText";
 
 //Constants
 import { pinnedButtonVariants } from "@constants/FramerVariants";
+
+//Styled Components
+import { Container } from "@styles/styled-components/buttons/Fancy";
 
 type Props = {
 	icon: ReactNode;
@@ -20,24 +21,5 @@ const FancyButton = ({ icon, text }: Props) => {
 		</Container>
 	);
 };
-
-const Container = styled(motion.button)`
-	height: 160px;
-	width: 160px;
-
-	cursor: pointer;
-	overflow: hidden;
-	position: relative;
-	display: grid;
-	place-items: center;
-	aspect-ratio: 1 / -1;
-	& > * {
-		grid-column: 1 / -1;
-		grid-row: 1 / -1;
-		&:first-child {
-			z-index: 5;
-		}
-	}
-`;
 
 export default FancyButton;

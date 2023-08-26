@@ -1,36 +1,7 @@
-import styled from "styled-components";
 import { motion } from "framer-motion";
+import styled from "styled-components";
 
-const Svg = () => {
-	return (
-		<svg viewBox="0 0 50 25">
-			<path d="M50,25c-9.8,0-19-4.6-25-12.5l0,0C19,4.6,9.8,0,0,0h50V25z" />
-		</svg>
-	);
-};
-
-type Props = {
-	text: string;
-	hasWorkoutName: boolean;
-};
-
-const PullTab = ({ text, hasWorkoutName }: Props) => {
-	return (
-		<Container>
-			<motion.div
-				initial={{ color: "#FFF" }}
-				animate={{ color: hasWorkoutName ? "var(--gray700)" : "#FFF" }}
-				transition={{ delay: 1, duration: 1 }}
-			>
-				<Svg />
-				{text}
-				<Svg />
-			</motion.div>
-		</Container>
-	);
-};
-
-const Container = styled(motion.div)`
+export const Container = styled(motion.div)`
 	width: 100%;
 	background: var(--gray800);
 	display: flex;
@@ -66,5 +37,3 @@ const Container = styled(motion.div)`
 		}
 	}
 `;
-
-export default PullTab;

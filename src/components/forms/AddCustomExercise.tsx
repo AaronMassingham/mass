@@ -5,14 +5,14 @@ import { v4 as uuidv4 } from "uuid";
 //Components
 import Times from "@components/icons/Times";
 import Button from "@components/buttons/Button";
-import Seperator from "@components/app/Seperator";
+import Seperator from "@components/misc/Seperator";
 import Dialog from "@components/Dialog";
 
 //Constants
 import { genericFadeOutVariants } from "@constants/FramerVariants";
 
 //styled Components
-import { DefaultPinnedContainerStyles as Container } from "@styles/Styles";
+import { Container } from "@styles/styled-components/PinnedContainer";
 
 const AddCustomExercise = () => {
 	const [dialogs, setDialogs] = useState(false);
@@ -38,7 +38,6 @@ const AddCustomExercise = () => {
 		e.preventDefault();
 		setDialogs(true);
 	};
-	console.log(dialogs);
 
 	return (
 		<>

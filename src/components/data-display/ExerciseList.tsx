@@ -7,6 +7,9 @@ import { useWorkoutContext } from "@contexts/WorkoutContextAlt";
 //Components
 import ExerciseListItem from "@components/data-display/ExerciseListItem";
 
+//Styled Components
+import { Container } from "@styles/styled-components/data-display/ExerciseList";
+
 const ExerciseList = () => {
 	const { workoutState } = useWorkoutContext();
 	const exerciseData = workoutState.exercises;
@@ -21,15 +24,5 @@ const ExerciseList = () => {
 		</Container>
 	);
 };
-
-const Container = styled.div`
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	gap: 2rem;
-
-	padding: calc(var(--padding) * 1.5) 0;
-	overflow: hidden;
-`;
 
 export default ExerciseList;

@@ -1,7 +1,6 @@
 import React, { useState, ChangeEvent } from "react";
-import { AnimatePresence } from "framer-motion";
-import styled from "styled-components";
 import { useRouter } from "next/router";
+import { AnimatePresence } from "framer-motion";
 
 //Context
 import { useWorkoutContext } from "@contexts/WorkoutContextAlt";
@@ -12,6 +11,9 @@ import { Workout } from "@typescriptTypes/workoutTypes";
 //Components
 import Input from "@components/form-elements/Input";
 import Dialog from "@components/Dialog";
+
+//Styled Components
+import { Container } from "@styles/styled-components/forms/SetWorkoutName";
 
 const SetWorkoutName = () => {
 	const router = useRouter();
@@ -56,25 +58,5 @@ const SetWorkoutName = () => {
 		</>
 	);
 };
-
-const Container = styled.div`
-	height: 100%;
-	width: 100%;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	justify-content: center;
-	position: relative;
-	& > div {
-		position: relative;
-		width: 100%;
-		text-align: center;
-		&:last-of-type {
-			padding-top: 1rem;
-			display: grid;
-			place-items: center;
-		}
-	}
-`;
 
 export default SetWorkoutName;

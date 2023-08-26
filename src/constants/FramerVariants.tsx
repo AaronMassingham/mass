@@ -15,7 +15,7 @@ export const genericFadeOutVariants: MotionProps = {
 		},
 	},
 };
-export const listItemVariant = {
+export const listItemVariant: MotionProps = {
 	initial: "hidden",
 	animate: "visible",
 	exit: "exit",
@@ -107,6 +107,50 @@ export const rotatingTextAnimation: MotionProps = {
 				duration: 60,
 				repeat: Infinity,
 			},
+		},
+	},
+};
+
+//
+
+export const headerTitleParentAnimation: MotionProps = {
+	initial: "hidden",
+	animate: "visible",
+	exit: "exit",
+
+	variants: {
+		hidden: {
+			height: "0rem",
+			transition: { when: "beforeChildren", duration: 0.5 },
+		},
+		visible: {
+			height: "2rem",
+			transition: { duration: 0.5 },
+		},
+		exit: {
+			height: "0rem",
+			transition: { when: "afterChildren", duration: 0.5 },
+		},
+	},
+};
+export const headerTitleChildAnimation: MotionProps = {
+	initial: "hidden",
+	animate: "visible",
+	exit: "exit",
+
+	variants: {
+		hidden: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+			transition: {
+				duration: 0.35,
+				delay: 0.5,
+			},
+		},
+		exit: {
+			opacity: 0,
 		},
 	},
 };
