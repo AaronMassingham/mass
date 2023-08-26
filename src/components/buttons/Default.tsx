@@ -1,12 +1,12 @@
 import React, { forwardRef } from "react";
 
 //Types
-import { ButtonProps } from "@typescriptTypes/buttonTypes";
+import { DefaultButtonType } from "@typescriptTypes/componentTypes";
 
 //Styled Components
 import { Container } from "@styles/styled-components/buttons/Default";
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const DefaultButton = forwardRef<HTMLButtonElement, DefaultButtonType>(
 	({ onClick, isLoading, text, fullw, buttonType }, ref) => {
 		const typeIsString = typeof text === "string";
 		return (
@@ -24,6 +24,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	}
 );
 
-Button.displayName = "Button";
+DefaultButton.displayName = "Button";
 
-export default Button;
+export default DefaultButton;

@@ -1,7 +1,10 @@
+//Types
+import { PreviousWorkoutItemType } from "@typescriptTypes/workoutTypes";
+
 //Styled Components
 import { Container } from "@styles/styled-components/data-display/PreviousWorkoutListItem";
 
-const PreviousWorkoutListItem = ({ title, date, vol }: Props) => {
+const PreviousWorkoutListItem = ({ title, date, vol }: PreviousWorkoutItemType) => {
 	return (
 		<Container>
 			<h2>{title}</h2>
@@ -14,11 +17,4 @@ const PreviousWorkoutListItem = ({ title, date, vol }: Props) => {
 		</Container>
 	);
 };
-
-type Props = {
-	title: string;
-	date: string;
-	vol: number;
-};
-
 export default PreviousWorkoutListItem;

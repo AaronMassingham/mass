@@ -1,21 +1,25 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-//Components
-import Input from "@components/form-elements/Input";
+//Types
+import { SearchExerciseType } from "@typescriptTypes/searchTypes";
+
+//Helpers
+import { filterNamesBySearchTerm } from "@helpers/filterHelpers";
 
 //Constants
-import { genericFadeOutVariants } from "@constants/FramerVariants";
+import { fadeInOutVariants } from "@constants/FramerVariants";
+
+//Components
+import Input from "@components/forms/elements/Input";
 
 //Styled Components
 import { Container } from "@styles/styled-components/forms/Search";
 
-const SearchExercise = ({ setName, possibleNames }: Props) => {
+const SearchExercise = ({ setName, possibleNames }: SearchExerciseType) => {
 	const [searchTerm, setSearchTerm] = useState("");
 
-	const filteredNames = possibleNames.filter((name) =>
-		name.toLowerCase().includes(searchTerm.toLowerCase())
-	);
+	const filteredNames = filterNamesBySearchTerm(possibleNames, searchTerm);
 
 	const handleSetExerciseName = (name: string) => {
 		setTimeout(() => {
@@ -28,7 +32,7 @@ const SearchExercise = ({ setName, possibleNames }: Props) => {
 	};
 
 	return (
-		<Container {...genericFadeOutVariants}>
+		<Container {...fadeInOutVariants}>
 			<Input
 				type="text"
 				placeholder="Type to filter"
@@ -46,12 +50,6 @@ const SearchExercise = ({ setName, possibleNames }: Props) => {
 			</div>
 		</Container>
 	);
-};
-
-type Props = {
-	setName: React.Dispatch<React.SetStateAction<any | null>>;
-	defaultName: string;
-	possibleNames: string[];
 };
 
 export default SearchExercise;

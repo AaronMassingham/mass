@@ -2,13 +2,13 @@ import React, { MouseEvent, Dispatch, SetStateAction } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 //Components
-import Input from "@components/form-elements/Input";
+import Input from "@components/forms/elements/Input";
 import Times from "@components/icons/Times";
-import Button from "@components/buttons/Button";
+import DefaultButton from "@components/buttons/Default";
 import Seperator from "@components/misc/Seperator";
 
 //Constants
-import { genericFadeOutVariants } from "@constants/FramerVariants";
+import { fadeInOutVariants } from "@constants/FramerVariants";
 import { REPVALUES, WEIGHTVALUES } from "@constants/InputValues";
 
 //Helpers
@@ -20,7 +20,10 @@ import useExerciseSetState from "@hooks/useExerciseSetState";
 //styled Components
 import { Container } from "@styles/styled-components/PinnedContainer";
 
-const AddExerciseSet = ({ exerciseSets }: Props) => {
+//Types
+import { AddExerciseSetType } from "@typescriptTypes/workoutTypes";
+
+const AddExerciseSet = ({ exerciseSets }: AddExerciseSetType) => {
 	const { currentSet, updateCurrentSet } = useExerciseSetState();
 
 	const weight = currentSet.weight;
@@ -51,7 +54,7 @@ const AddExerciseSet = ({ exerciseSets }: Props) => {
 	};
 
 	return (
-		<Container layout {...genericFadeOutVariants}>
+		<Container layout {...fadeInOutVariants}>
 			<Seperator direction="up" />
 			<div>
 				<Input
@@ -59,7 +62,6 @@ const AddExerciseSet = ({ exerciseSets }: Props) => {
 					value={weight || ""}
 					onChange={(e) => updateCurrentSet("weight", parseFloat(e.target.value) || null)}
 				/>
-
 				<Input
 					{...REPVALUES}
 					value={reps || ""}
@@ -67,7 +69,7 @@ const AddExerciseSet = ({ exerciseSets }: Props) => {
 				/>
 			</div>
 			<div>
-				<Button
+				<DefaultButton
 					isLoading={checkForValues}
 					onClick={handleAppendExerciseSet}
 					text={<Times isRotated fillColor="var(--gray900)" />}
@@ -75,10 +77,6 @@ const AddExerciseSet = ({ exerciseSets }: Props) => {
 			</div>
 		</Container>
 	);
-};
-
-type Props = {
-	exerciseSets: Dispatch<SetStateAction<any | null>>;
 };
 
 export default AddExerciseSet;

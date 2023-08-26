@@ -7,6 +7,9 @@ import Times from "@components/icons/Times";
 //Helpers
 import { calculateVolume } from "@helpers/calculationHelpers";
 
+//Types
+import { ExerciseListItemType } from "@typescriptTypes/workoutTypes";
+
 //Styled Components
 import {
 	Container,
@@ -15,12 +18,7 @@ import {
 	OverflowList,
 } from "@styles/styled-components/data-display/ExerciseListItem";
 
-type Props = {
-	completedExercises: Exercise;
-	listRef: any;
-};
-
-const ExerciseListItem = ({ completedExercises, listRef }: Props) => {
+const ExerciseListItem = ({ completedExercises, listRef }: ExerciseListItemType) => {
 	const { name, sets } = completedExercises;
 
 	const volume = calculateVolume(completedExercises.sets);

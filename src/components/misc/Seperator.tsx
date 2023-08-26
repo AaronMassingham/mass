@@ -1,11 +1,10 @@
 //Styled Components
 import { Container } from "@styles/styled-components/misc/Seperator";
 
-type Props = {
-	direction: "up" | "down";
-};
+//Types
+import { SeperatorType } from "@typescriptTypes/componentTypes";
 
-const Seperator = ({ direction }: Props) => {
+const Seperator = ({ direction }: SeperatorType) => {
 	return (
 		<Container $direction={direction}>
 			<div>

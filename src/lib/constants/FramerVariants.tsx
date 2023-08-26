@@ -1,6 +1,6 @@
 import { MotionProps } from "framer-motion";
 
-export const genericFadeOutVariants: MotionProps = {
+export const fadeInOutVariants: MotionProps = {
 	initial: "hidden",
 	animate: "visible",
 	exit: "hidden",
@@ -15,7 +15,8 @@ export const genericFadeOutVariants: MotionProps = {
 		},
 	},
 };
-export const listItemVariant: MotionProps = {
+
+export const slideInUpVariant: MotionProps = {
 	initial: "hidden",
 	animate: "visible",
 	exit: "exit",
@@ -36,7 +37,8 @@ export const listItemVariant: MotionProps = {
 		},
 	},
 };
-export const backButtonVariants: MotionProps = {
+
+export const fadeInFromLeftVariant: MotionProps = {
 	initial: "hidden",
 	animate: "visible",
 	exit: "exit",
@@ -111,8 +113,6 @@ export const rotatingTextAnimation: MotionProps = {
 	},
 };
 
-//
-
 export const headerTitleParentAnimation: MotionProps = {
 	initial: "hidden",
 	animate: "visible",
@@ -133,10 +133,11 @@ export const headerTitleParentAnimation: MotionProps = {
 		},
 	},
 };
+
 export const headerTitleChildAnimation: MotionProps = {
 	initial: "hidden",
 	animate: "visible",
-	exit: "exit",
+	exit: "hidden",
 
 	variants: {
 		hidden: {
@@ -149,8 +150,24 @@ export const headerTitleChildAnimation: MotionProps = {
 				delay: 0.5,
 			},
 		},
-		exit: {
+	},
+};
+
+export const dialogVariants: MotionProps = {
+	initial: "hidden",
+	animate: "visible",
+	exit: "hidden",
+
+	variants: {
+		hidden: {
 			opacity: 0,
+			y: 10,
+			transition: { delay: 0.25 },
+		},
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: { delay: 0.25 },
 		},
 	},
 };

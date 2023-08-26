@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-import { DefaultButtonProps } from "@typescriptTypes/StyledComponentTypes";
+import { DefaultButtonProps } from "@typescriptTypes/styledComponentTypes";
 
 export const Container = styled(motion.button)<DefaultButtonProps>`
 	position: relative;

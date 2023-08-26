@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Exercise, Workout } from "@typescriptTypes/workoutTypes";
 import { calculateVolume } from "@helpers/calculationHelpers";
 //Context
-import { useWorkoutContext } from "@contexts/WorkoutContextAlt";
+import { useWorkoutContext } from "@contexts/WorkoutContext";
 import { useRouter } from "next/router";
 
 export function useExerciseConstructorHandlers() {

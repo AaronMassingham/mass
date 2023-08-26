@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AnimatePresence } from "framer-motion";
 import { styled } from "styled-components";
 //Contexts
-import { useWorkoutContext, initialWorkoutState } from "@contexts/WorkoutContextAlt";
+import { useWorkoutContext, initialWorkoutState } from "@contexts/WorkoutContext";
 
 //Types
 import { Workout } from "@typescriptTypes/workoutTypes";
@@ -14,17 +14,13 @@ import { Hydrated } from "@typescriptTypes/miscTypes";
 //Components
 import SetWorkoutName from "@components/forms/SetWorkoutName";
 import ExerciseList from "@components/data-display/ExerciseList";
-import FancyButton from "@components/buttons/FancyButton";
+import FancyButton from "@components/buttons/Fancy";
 import WrapperContainer from "@components/wrappers/WrapperContainer";
 import Plus from "@components/icons/Plus";
-import SlideButton from "@components/buttons/SlideButton";
+import SlideButton from "@components/buttons/Slide";
 import StartWorkoutImage from "@components/icons/StartWorkoutImage";
 
-type Props = {
-	isHydrated: Hydrated;
-};
-
-export default function Workout({ isHydrated }: Props) {
+export default function Workout({ isHydrated }: Hydrated) {
 	const router = useRouter();
 
 	const { workoutState, setWorkoutState } = useWorkoutContext();

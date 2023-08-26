@@ -1,4 +1,4 @@
-export interface HeadingProps {
+export interface TitleProps {
 	$variant: "default" | "plain";
 }
 

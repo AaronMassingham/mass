@@ -1,12 +1,13 @@
-import React, { ReactNode } from "react";
-
 //Constants
-import { genericFadeOutVariants } from "@constants/FramerVariants";
+import { fadeInOutVariants } from "@constants/FramerVariants";
+
+//Types
+import { NoDataType } from "@typescriptTypes/componentTypes";
 
 //Styled Components
 import { Container } from "@styles/styled-components/data-display/NoData";
 
-const NoData = (props: Props) => {
+const NoData = (props: NoDataType) => {
 	const content =
 		props.type === "message" ? (
 			<div style={{ border: "1px dashed var(--gray700)" }}>
@@ -18,26 +19,10 @@ const NoData = (props: Props) => {
 		);
 
 	return (
-		<Container layout="size" {...genericFadeOutVariants}>
+		<Container layout="size" {...fadeInOutVariants}>
 			{content}
 		</Container>
 	);
 };
-
-type MessageProps = {
-	type: "message";
-	message: string;
-	smalltext?: string;
-	hasIcon?: never;
-};
-
-type ImageProps = {
-	type: "image";
-	hasIcon: ReactNode;
-	message?: never;
-	smalltext?: never;
-};
-
-type Props = MessageProps | ImageProps;
 
 export default NoData;

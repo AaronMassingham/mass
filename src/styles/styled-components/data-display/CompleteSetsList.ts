@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-import { CompleteSetsListProps } from "@typescriptTypes/StyledComponentTypes";
+import { CompleteSetsListProps } from "@typescriptTypes/styledComponentTypes";
 
 export const Container = styled(motion.div)<CompleteSetsListProps>`
 	padding: 2rem 0;

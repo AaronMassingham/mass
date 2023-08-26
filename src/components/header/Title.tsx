@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import Seperator from "@components/misc/Seperator";
 
 //Styled Components
-import { Container } from "@styles/styled-components/header/Heading";
+import { Container } from "@styles/styled-components/header/Title";
 
-const Heading = ({ text, secondaryText, onClick, variant }: Props) => {
+const Title = ({ text, secondaryText, variant, onClick }: Props) => {
 	const isPlain = variant === "plain";
 
 	return (
@@ -21,8 +21,8 @@ const Heading = ({ text, secondaryText, onClick, variant }: Props) => {
 type Props = {
 	text: null | string;
 	secondaryText?: string | ReactNode;
-	onClick?: MouseEventHandler<HTMLElement>;
 	variant: "default" | "plain";
+	onClick?: MouseEventHandler<HTMLElement>;
 };
 
-export default Heading;
+export default Title;

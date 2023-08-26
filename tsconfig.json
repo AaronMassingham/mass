@@ -27,16 +27,19 @@
         "./components/*"
       ],
       "@hooks/*": [
-        "./hooks/*"
+        "./lib/hooks/*"
       ],
       "@constants/*": [
-        "./constants/*"
+        "./lib/constants/*"
       ],
       "@contexts/*": [
-        "./contexts/*"
+        "./lib/contexts/*"
       ],
       "@helpers/*": [
-        "./helpers/*"
+        "./lib/helpers/*"
+      ],
+      "@utils/*": [
+        "./lib/utils/*"
       ],
       "@typescriptTypes/*": [
         "./types/*"

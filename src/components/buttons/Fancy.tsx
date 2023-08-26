@@ -1,5 +1,8 @@
-import React, { ReactNode } from "react";
+//Components
 import RotatingText from "@components/buttons/RotatingText";
+
+//Types
+import { FancyButtonType } from "@typescriptTypes/componentTypes";
 
 //Constants
 import { pinnedButtonVariants } from "@constants/FramerVariants";
@@ -7,16 +10,10 @@ import { pinnedButtonVariants } from "@constants/FramerVariants";
 //Styled Components
 import { Container } from "@styles/styled-components/buttons/Fancy";
 
-type Props = {
-	icon: ReactNode;
-	text: "start" | "continue" | "add" | "loading";
-};
-
-const FancyButton = ({ icon, text }: Props) => {
+const FancyButton = ({ icon, text }: FancyButtonType) => {
 	return (
 		<Container {...pinnedButtonVariants}>
 			{icon}
-
 			<RotatingText variant={text} />
 		</Container>
 	);
