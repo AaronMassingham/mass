@@ -6,7 +6,7 @@ import { AnimatePresence } from "framer-motion";
 import { useWorkoutContext } from "@contexts/WorkoutContext";
 
 //Types
-import { Workout } from "@typescriptTypes/workoutTypes";
+import { Workout } from "@typescriptTypes/WorkoutTypes";
 
 //Components
 import Input from "@components/forms/elements/Input";

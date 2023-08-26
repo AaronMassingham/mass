@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from "react";
 
 //Styled Components
-import { ScrollableContainer as Container } from "@styles/styled-components/wrappers/wrappers";
+import { ScrollableContainer as Container } from "@styles/styled-components/wrappers/Wrappers";
 
 //Types
-import { ScrollableWrapperType } from "@typescriptTypes/componentTypes";
+import { ScrollableWrapperType } from "@typescriptTypes/ComponentTypes";
 
 const ScrollableContainer = ({ children, data }: ScrollableWrapperType) => {
 	const containerRef = useRef<HTMLDivElement | null>(null);

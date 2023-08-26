@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { SeperatorProps } from "@typescriptTypes/styledComponentTypes";
+import { SeperatorProps } from "@typescriptTypes/StyledComponentTypes";
 
 export const Container = styled.div<SeperatorProps>`
 	transform: ${(props) => props.$direction === "up" && "rotate(180deg)"};

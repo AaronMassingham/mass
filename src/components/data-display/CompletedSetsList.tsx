@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 
 //Types
-import { CompletedSetsListType } from "@typescriptTypes/workoutTypes";
+import { CompletedSetsListType } from "@typescriptTypes/WorkoutTypes";
 
 //Components
 import NoData from "@components/data-display/NoData";

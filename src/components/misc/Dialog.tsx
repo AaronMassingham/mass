@@ -2,7 +2,7 @@ import { useState, MouseEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 //Types
-import { DialogType } from "@typescriptTypes/componentTypes";
+import { DialogType } from "@typescriptTypes/ComponentTypes";
 
 //Components
 import Times from "../icons/Times";

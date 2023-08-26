@@ -1,8 +1,8 @@
 //Styled Components
-import { LayoutContainer as Container } from "@styles/styled-components/wrappers/wrappers";
+import { LayoutContainer as Container } from "@styles/styled-components/wrappers/Wrappers";
 
 //Types
-import { WrapperType } from "@typescriptTypes/componentTypes";
+import { WrapperType } from "@typescriptTypes/ComponentTypes";
 
 const WrapperContainer = ({ children, variant, hasSibling }: WrapperType) => {
 	return (

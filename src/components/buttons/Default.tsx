@@ -1,10 +1,10 @@
 import React, { forwardRef } from "react";
 
 //Types
-import { DefaultButtonType } from "@typescriptTypes/componentTypes";
+import { DefaultButtonType } from "@typescriptTypes/ComponentTypes";
 
 //Styled Components
-import { Container } from "@styles/styled-components/buttons/Default";
+import { Container } from "@styles/styled-components/buttons/DefaultAlt";
 
 const DefaultButton = forwardRef<HTMLButtonElement, DefaultButtonType>(
 	({ onClick, isLoading, text, buttonType }, ref) => {
