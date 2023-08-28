@@ -2,7 +2,7 @@
 import { Inter } from "next/font/google";
 
 //Types
-import { ChildrenProps } from "@typescriptTypes/MMiscTypes";
+import { ChildrenProps } from "@typescriptTypes/MiscTypes";
 
 const inter = Inter({ subsets: ["latin"] });
 

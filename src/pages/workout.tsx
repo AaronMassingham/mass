@@ -8,8 +8,8 @@ import { styled } from "styled-components";
 import { useWorkoutContext, initialWorkoutState } from "@contexts/WorkoutContext";
 
 //Types
-import { Workout } from "@typescriptTypes/WWorkoutTypes";
-import { Hydrated } from "@typescriptTypes/MMiscTypes";
+import { Workout } from "@typescriptTypes/WorkoutTypes";
+import { Hydrated } from "@typescriptTypes/MiscTypes";
 
 //Components
 import SetWorkoutName from "@components/forms/SetWorkoutName";

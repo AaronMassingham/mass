@@ -1,5 +1,5 @@
 //Types
-import { PreviousWorkoutItemType } from "@typescriptTypes/WWorkoutTypes";
+import { PreviousWorkoutItemType } from "@typescriptTypes/WorkoutTypes";
 
 //Styled Components
 import { Container } from "@styles/styled-components/data-display/PreviousWorkoutListItem";

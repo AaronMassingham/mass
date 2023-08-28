@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { UserImageProps } from "@typescriptTypes/SStyledComponentTypes";
+import { UserImageProps } from "@typescriptTypes/StyledComponentTypes";
 
 export const Container = styled.div<UserImageProps>`
 	width: ${(props) => props.$width && `${props.$width}rem`};

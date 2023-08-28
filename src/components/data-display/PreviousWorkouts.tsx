@@ -3,7 +3,7 @@ import NoData from "./NoData";
 import PreviousWorkoutListItem from "./PreviousWorkoutListItem";
 
 //Types
-import { PreviousWorkoutsType } from "@typescriptTypes/WWorkoutTypes";
+import { PreviousWorkoutsType } from "@typescriptTypes/WorkoutTypes";
 
 const PreviousWorkouts = ({ data }: PreviousWorkoutsType) => {
 	return (

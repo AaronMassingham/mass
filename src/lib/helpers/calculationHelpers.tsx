@@ -1,4 +1,4 @@
-import { Set } from "@typescriptTypes/WWorkoutTypes";
+import { Set } from "@typescriptTypes/WorkoutTypes";
 
 export function calculateVolume(sets: Array<Set>) {
 	return sets.reduce(
