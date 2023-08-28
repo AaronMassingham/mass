@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 
 //Styled Components
-import { ScrollableContainer as Container } from "@styles/styled-components/wrappers/Wrappers";
+import { ScrollableContainer as Container } from "@styles/styled-components/wrappers/wrappers";
 
 //Types
 import { ScrollableWrapperType } from "@typescriptTypes/CComponentTypes";

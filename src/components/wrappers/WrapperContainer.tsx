@@ -1,5 +1,5 @@
 //Styled Components
-import { LayoutContainer as Container } from "@styles/styled-components/wrappers/Wrappers";
+import { LayoutContainer as Container } from "@styles/styled-components/wrappers/wrappers";
 
 //Types
 import { WrapperType } from "@typescriptTypes/CComponentTypes";
