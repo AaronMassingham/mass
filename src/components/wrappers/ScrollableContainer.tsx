@@ -3,7 +3,10 @@ import React, { useRef, useEffect } from "react";
 //Styled Components
 import { ScrollableContainer as Container } from "@styles/styled-components/wrappers/wrappers";
 
-const ScrollableContainer = ({ children, data }: Props) => {
+//Types
+import { ScrollableWrapperType } from "@typescriptTypes/CComponentTypes";
+
+const ScrollableContainer = ({ children, data }: ScrollableWrapperType) => {
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	useEffect(() => {
 		if (data && containerRef.current) {
@@ -13,8 +16,4 @@ const ScrollableContainer = ({ children, data }: Props) => {
 	return <Container ref={containerRef}>{children}</Container>;
 };
 
-type Props = {
-	children: React.ReactNode;
-	data?: any;
-};
 export default ScrollableContainer;

@@ -4,12 +4,12 @@ import { v4 as uuidv4 } from "uuid";
 
 //Components
 import Times from "@components/icons/Times";
-import Button from "@components/buttons/Button";
+import DefaultButton from "@components/buttons/Default";
 import Seperator from "@components/misc/Seperator";
-import Dialog from "@components/Dialog";
+import Dialog from "@components/misc/Dialog";
 
 //Constants
-import { genericFadeOutVariants } from "@constants/FramerVariants";
+import { fadeInOutVariants } from "@constants/FramerVariants";
 
 //styled Components
 import { Container } from "@styles/styled-components/PinnedContainer";
@@ -41,11 +41,14 @@ const AddCustomExercise = () => {
 
 	return (
 		<>
-			<Container layout {...genericFadeOutVariants}>
+			<Container layout {...fadeInOutVariants}>
 				<Seperator direction="up" />
 				<div>Add New</div>
 
-				<Button onClick={handleClick} text={<Times isRotated fillColor="var(--gray900)" />} />
+				<DefaultButton
+					onClick={handleClick}
+					text={<Times isRotated fillColor="var(--gray900)" />}
+				/>
 			</Container>
 			<AnimatePresence>
 				{dialogs && (

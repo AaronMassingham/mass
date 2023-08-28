@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import { AnimatePresence, motion, useAnimation } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 
 //Constants
 import { pinnedButtonVariants } from "@constants/FramerVariants";
 
+//Types
+import { SlideButtonType } from "@typescriptTypes/CComponentTypes";
+
 //Styled Components
 import { Container } from "@styles/styled-components/buttons/Slide";
 
-interface SlideButtonProps {
-	onDragEnd: () => void;
-	text: string;
-}
-
-const SlideButton = ({ onDragEnd, text }: SlideButtonProps) => {
+const SlideButton = ({ onDragEnd, text }: SlideButtonType) => {
 	const minDragThreshold = 200;
 	const buttonControls = useAnimation();
 	const [draggedPastThreshold, setDraggedPastThreshold] = useState(false);

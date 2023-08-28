@@ -4,11 +4,10 @@ import { rotatingTextAnimation } from "@constants/FramerVariants";
 //Styled Components
 import { Container, Svg, Div } from "@styles/styled-components/buttons/RotatingText";
 
-type Props = {
-	variant: "start" | "continue" | "add" | "loading";
-};
+//Types
+import { RotatingTextType } from "@typescriptTypes/CComponentTypes";
 
-const RotatingText = ({ variant }: Props) => {
+const RotatingText = ({ variant }: RotatingTextType) => {
 	let defaultStyles = {
 		letterSpacing: 1,
 		fontSize: 0.852,

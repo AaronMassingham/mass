@@ -1,8 +1,7 @@
-import React, { Dispatch, SetStateAction } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 //Types
-import { Exercise, Set } from "@typescriptTypes/workoutTypes";
+import { CompletedSetsListType } from "@typescriptTypes/WWorkoutTypes";
 
 //Components
 import NoData from "@components/data-display/NoData";
@@ -12,12 +11,12 @@ import ScrollableContainer from "@components/wrappers/ScrollableContainer";
 import StartLiftingImage from "@components/icons/StartLiftingImage";
 
 //Constants
-import { genericFadeOutVariants, listItemVariant } from "@constants/FramerVariants";
+import { fadeInOutVariants, slideInUpVariant } from "@constants/FramerVariants";
 
 //Styled Components
 import { Container } from "@styles/styled-components/data-display/CompleteSetsList";
 
-const CompletedSetsList = ({ data, exerciseSets }: Props) => {
+const CompletedSetsList = ({ data, exerciseSets }: CompletedSetsListType) => {
 	const handleSetDelete = (setId: number) => {
 		exerciseSets((prevState) => ({
 			...prevState,
@@ -28,7 +27,7 @@ const CompletedSetsList = ({ data, exerciseSets }: Props) => {
 	const hasSets = data.length !== 0;
 
 	return (
-		<Container $hasSets={hasSets} {...genericFadeOutVariants}>
+		<Container $hasSets={hasSets} {...fadeInOutVariants}>
 			<ScrollableContainer data={data}>
 				<AnimatePresence mode="wait">
 					{hasSets ? (
@@ -42,7 +41,7 @@ const CompletedSetsList = ({ data, exerciseSets }: Props) => {
 										duration: 0.25,
 									},
 								}}
-								{...listItemVariant}
+								{...slideInUpVariant}
 							>
 								<CompletedSetsListItem
 									set_id={set.set_id}
@@ -63,11 +62,6 @@ const CompletedSetsList = ({ data, exerciseSets }: Props) => {
 			</ScrollableContainer>
 		</Container>
 	);
-};
-
-type Props = {
-	data: Set[];
-	exerciseSets: Dispatch<SetStateAction<Exercise>>;
 };
 
 export default CompletedSetsList;

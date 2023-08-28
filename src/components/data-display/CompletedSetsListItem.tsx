@@ -1,20 +1,18 @@
-import React, { ReactNode } from "react";
-
 //Components
 import Times from "@components/icons/Times";
+
+//Types
+import { CompletedSetsListItemType } from "@typescriptTypes/WWorkoutTypes";
 
 //Styled Components
 import { Container, Value } from "@styles/styled-components/data-display/CompletedSetsListItem";
 
-type Props = {
-	set_id: number;
-	weight: number;
-	repetitions: number;
-	setNumber: number;
-	children: ReactNode;
-};
-
-const CompletedSetsListItem = ({ setNumber, weight, repetitions, children }: Props) => {
+const CompletedSetsListItem = ({
+	setNumber,
+	weight,
+	repetitions,
+	children,
+}: CompletedSetsListItemType) => {
 	return (
 		<Container>
 			<div>{setNumber}</div>

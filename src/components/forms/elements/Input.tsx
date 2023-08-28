@@ -1,4 +1,7 @@
-import { ComponentPropsWithoutRef, useState } from "react";
+import { useState } from "react";
+
+//Types
+import { InputElementType } from "@typescriptTypes/CComponentTypes";
 
 //Styled Components
 import {
@@ -9,14 +12,7 @@ import {
 	Tag,
 } from "@styles/styled-components/form-elements/Input";
 
-interface InputGroupProps extends ComponentPropsWithoutRef<"input"> {
-	label?: string;
-	value?: string | number;
-	tag?: string;
-	hasError?: boolean;
-}
-
-const Input = ({ label, tag, value, hasError, ...rest }: InputGroupProps) => {
+const Input = ({ label, tag, value, hasError, ...rest }: InputElementType) => {
 	const [isFocused, setIsFocused] = useState(false);
 	return (
 		<Container>

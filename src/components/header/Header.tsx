@@ -2,13 +2,13 @@ import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
 
 //Context
-import { useWorkoutContext } from "@contexts/WorkoutContextAlt";
+import { useWorkoutContext } from "@contexts/WorkoutContext";
 
 //Components
 import Profile from "@components/header/Profile";
 import Nav from "@components/buttons/Nav";
 import PullTab from "@components/header/PullTab";
-import BackBtn from "@components/buttons/BackBtn";
+import BackButton from "@components/buttons/Back";
 
 //Hooks
 import { useHydration } from "@hooks/useHydration";
@@ -27,7 +27,7 @@ const Header = () => {
 	const user = "aaron";
 	const pathNotIndex = router.pathname !== "/";
 
-	const backButtonCondition = pathNotIndex && <BackBtn />;
+	const backButtonCondition = pathNotIndex && <BackButton />;
 
 	return (
 		isHydrated && (

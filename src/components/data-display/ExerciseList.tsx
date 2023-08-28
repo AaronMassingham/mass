@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 
 //Context
-import { useWorkoutContext } from "@contexts/WorkoutContextAlt";
+import { useWorkoutContext } from "@contexts/WorkoutContext";
 
 //Components
 import ExerciseListItem from "@components/data-display/ExerciseListItem";

@@ -3,14 +3,14 @@ import { useRouter } from "next/router";
 import { AnimatePresence } from "framer-motion";
 
 //Context
-import { useWorkoutContext } from "@contexts/WorkoutContextAlt";
+import { useWorkoutContext } from "@contexts/WorkoutContext";
 
 //Types
-import { Workout } from "@typescriptTypes/workoutTypes";
+import { Workout } from "@typescriptTypes/WWorkoutTypes";
 
 //Components
-import Input from "@components/form-elements/Input";
-import Dialog from "@components/Dialog";
+import Input from "@components/forms/elements/Input";
+import Dialog from "@components/misc/Dialog";
 
 //Styled Components
 import { Container } from "@styles/styled-components/forms/SetWorkoutName";
@@ -34,28 +34,26 @@ const SetWorkoutName = () => {
 		router.push("/exercise");
 	};
 	return (
-		<>
-			<AnimatePresence>
-				<Dialog
-					showDialog={true}
-					showCloseBtnCondition={true}
-					hasOtherEvent={() => handleSetName()}
-					text="Let's get started."
-				>
-					<Container>
-						<div>
-							<Input
-								type="text"
-								name="name"
-								value={workoutName}
-								onChange={assignWorkoutName}
-								placeholder={workoutState.name ? workoutState.name : "Name your workout"}
-							/>
-						</div>
-					</Container>
-				</Dialog>
-			</AnimatePresence>
-		</>
+		<AnimatePresence>
+			<Dialog
+				showDialog={true}
+				showCloseBtnCondition={true}
+				hasOtherEvent={() => handleSetName()}
+				text="Let's get started."
+			>
+				<Container>
+					<div>
+						<Input
+							type="text"
+							name="name"
+							value={workoutName}
+							onChange={assignWorkoutName}
+							placeholder={workoutState.name ? workoutState.name : "Name your workout"}
+						/>
+					</div>
+				</Container>
+			</Dialog>
+		</AnimatePresence>
 	);
 };
 

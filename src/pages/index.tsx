@@ -3,27 +3,23 @@ import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
 
 //Contexts
-import { useWorkoutContext } from "@contexts/WorkoutContextAlt";
+import { useWorkoutContext } from "@contexts/WorkoutContext";
 
 //Constants
 import { PREVWORKOUTS } from "@constants/PreviousWorkoutsDummy";
 
 //Types
-import { Hydrated } from "@typescriptTypes/miscTypes";
+import { Hydrated } from "@typescriptTypes/MMiscTypes";
 
 //Components
 import PreviousWorkouts from "@components/data-display/PreviousWorkouts";
 import WrapperContainer from "@components/wrappers/WrapperContainer";
 import Muscle from "@components/icons/Muscle";
-import FancyButton from "@components/buttons/FancyButton";
-import Heading from "@components/header/Heading";
+import FancyButton from "@components/buttons/Fancy";
+import Heading from "@components/header/Title";
 import ScrollableContainer from "@components/wrappers/ScrollableContainer";
 
-type Props = {
-	isHydrated: Hydrated;
-};
-
-export default function Home({ isHydrated }: Props) {
+export default function Home({ isHydrated }: Hydrated) {
 	const { workoutState, setWorkoutState } = useWorkoutContext();
 
 	const setWorkoutIdentity = () => {

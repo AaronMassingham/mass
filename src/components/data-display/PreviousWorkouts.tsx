@@ -2,15 +2,10 @@
 import NoData from "./NoData";
 import PreviousWorkoutListItem from "./PreviousWorkoutListItem";
 
-type Props = {
-	data: Array<{
-		title: string;
-		date: string;
-		vol: number;
-	}>;
-};
+//Types
+import { PreviousWorkoutsType } from "@typescriptTypes/WWorkoutTypes";
 
-const PreviousWorkouts = ({ data }: Props) => {
+const PreviousWorkouts = ({ data }: PreviousWorkoutsType) => {
 	return (
 		<div>
 			{data ? (
