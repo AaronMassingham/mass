@@ -5,7 +5,7 @@ import { rotatingTextAnimation } from "@constants/FramerVariants";
 import { Container, Svg, Div } from "@styles/styled-components/buttons/RotatingText";
 
 //Types
-import { RotatingTextType } from "@typescriptTypes/CComponentTypes";
+import { RotatingTextType } from "@typescriptTypes/ComponentTypes";
 
 const RotatingText = ({ variant }: RotatingTextType) => {
 	let defaultStyles = {

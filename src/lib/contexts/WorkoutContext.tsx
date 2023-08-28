@@ -7,7 +7,7 @@ import React, {
 	Dispatch,
 	ReactNode,
 } from "react";
-import { Workout } from "@typescriptTypes/WWorkoutTypes";
+import { Workout } from "@typescriptTypes/WorkoutTypes";
 
 interface WorkoutContextValue {
 	workoutState: Workout;

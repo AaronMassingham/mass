@@ -5,7 +5,7 @@ import { motion, useAnimation } from "framer-motion";
 import { pinnedButtonVariants } from "@constants/FramerVariants";
 
 //Types
-import { SlideButtonType } from "@typescriptTypes/CComponentTypes";
+import { SlideButtonType } from "@typescriptTypes/ComponentTypes";
 
 //Styled Components
 import { Container } from "@styles/styled-components/buttons/Slide";

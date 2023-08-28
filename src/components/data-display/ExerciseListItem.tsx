@@ -1,5 +1,5 @@
 //Types
-import { Exercise } from "@typescriptTypes/WWorkoutTypes";
+import { Exercise } from "@typescriptTypes/WorkoutTypes";
 
 //Components
 import Times from "@components/icons/Times";
@@ -8,7 +8,7 @@ import Times from "@components/icons/Times";
 import { calculateVolume } from "@helpers/calculationHelpers";
 
 //Types
-import { ExerciseListItemType } from "@typescriptTypes/WWorkoutTypes";
+import { ExerciseListItemType } from "@typescriptTypes/WorkoutTypes";
 
 //Styled Components
 import {

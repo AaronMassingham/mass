@@ -1,6 +1,6 @@
 // hooks/useWorkoutHandlers.js
 import { useState } from "react";
-import { Exercise, Workout } from "@typescriptTypes/WWorkoutTypes";
+import { Exercise, Workout } from "@typescriptTypes/WorkoutTypes";
 import { calculateVolume } from "@helpers/calculationHelpers";
 //Context
 import { useWorkoutContext } from "@contexts/WorkoutContext";
