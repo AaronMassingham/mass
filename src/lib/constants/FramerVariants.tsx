@@ -76,23 +76,27 @@ export const pinnedButtonVariants: MotionProps = {
 	exit: "hidden",
 	variants: {
 		hidden: {
-			y: 20,
+			// y: 20,
 			opacity: 0,
 			transition: {
 				ease: "easeOut",
-				opacity: {
-					duration: 0.5,
-				},
+				delay: 0.5,
+				duration: 0.35,
+				// opacity: {
+				// 	duration: 0.35,
+				// },
 			},
 		},
 		visible: {
-			y: 0,
+			// y: 0,
 			opacity: 1,
 			transition: {
 				ease: "easeOut",
-				opacity: {
-					duration: 0.5,
-				},
+				delay: 0.5,
+				duration: 0.35,
+				// opacity: {
+				// 	duration: 0.35,
+				// },
 			},
 		},
 	},

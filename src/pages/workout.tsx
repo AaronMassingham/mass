@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
@@ -15,7 +15,7 @@ import { Hydrated } from "@typescriptTypes/MiscTypes";
 import SetWorkoutName from "@components/forms/SetWorkoutName";
 import ExerciseList from "@components/data-display/ExerciseList";
 import FancyButton from "@components/buttons/Fancy";
-import WrapperContainer from "@components/wrappers/WrapperContainer";
+import WrapperContainer from "@components/wrappers/Wrapper";
 import Plus from "@components/icons/Plus";
 import SlideButton from "@components/buttons/Slide";
 import StartWorkoutImage from "@components/icons/StartWorkoutImage";
@@ -30,14 +30,15 @@ export default function Workout({ isHydrated }: Hydrated) {
 	const hasWorkoutName = workoutState.name !== null;
 
 	const uploadWorkout = () => {
+		router.push("/");
 		if (hasWorkoutName) {
 			setCompletedExercises((prevState: any) => ({
 				...prevState,
 				workouts: [workoutState],
 			}));
-
-			setWorkoutState(initialWorkoutState);
-			router.push("/");
+			setTimeout(() => {
+				setWorkoutState(initialWorkoutState);
+			}, 500);
 		} else {
 			console.log("no name given!");
 		}

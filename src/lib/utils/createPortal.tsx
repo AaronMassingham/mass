@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom";
+import { ReactNode } from "react";
 
-export function createPortal(content: React.ReactNode) {
+export function createPortal(children: ReactNode) {
 	if (typeof window === "object") {
 		const modalContainer = document.getElementById("modal-container");
 
@@ -8,7 +9,7 @@ export function createPortal(content: React.ReactNode) {
 			return null;
 		}
 
-		return ReactDOM.createPortal(content, modalContainer);
+		return ReactDOM.createPortal(children, modalContainer);
 	}
 
 	return null;

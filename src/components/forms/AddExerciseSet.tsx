@@ -34,7 +34,6 @@ const AddExerciseSet = ({ exerciseSets }: AddExerciseSetType) => {
 	const handleAppendExerciseSet = (e: MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		if (checkForValues) {
-			alert("Weight and repetitions need a value between 1 and 999.");
 			return;
 		}
 

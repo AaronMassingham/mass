@@ -36,6 +36,7 @@ export type DefaultButtonType = {
 export type FancyButtonType = {
 	icon: React.ReactNode;
 	text: buttonVariants;
+	onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 export type RotatingTextType = {

@@ -37,7 +37,8 @@ export const LayoutContainer = styled(motion.div)<WrapperProps>`
 					bottom: 0;
 					left: 0;
 					right: 0;
-					height: 220px;
+					max-height: 220px;
+					height: 100%;
 					padding-bottom: var(--padding);
 					margin-bottom: -1rem;
 					background-color: var(--gray900);

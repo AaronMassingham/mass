@@ -7,6 +7,9 @@ import { CompletedSetsListItemType } from "@typescriptTypes/WorkoutTypes";
 //Styled Components
 import { Container, Value } from "@styles/styled-components/data-display/CompletedSetsListItem";
 
+//Constants
+import { slideInUpVariant } from "@constants/FramerVariants";
+
 const CompletedSetsListItem = ({
 	setNumber,
 	weight,
@@ -14,7 +17,16 @@ const CompletedSetsListItem = ({
 	children,
 }: CompletedSetsListItemType) => {
 	return (
-		<Container>
+		<Container
+			layout
+			style={{ height: "20%", display: "flex" }}
+			transition={{
+				layout: {
+					duration: 0.25,
+				},
+			}}
+			{...slideInUpVariant}
+		>
 			<div>{setNumber}</div>
 
 			<Value>{weight.toString()}</Value>

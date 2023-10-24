@@ -33,9 +33,9 @@ export const Container = styled(motion.form)`
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
-		gap: 4rem;
+		gap: 6rem;
 		&:last-of-type {
-			transform: translateY(1rem);
+			transform: translateY(0.5rem);
 			max-width: 70%;
 			margin: auto;
 			position: relative;
