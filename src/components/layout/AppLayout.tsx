@@ -13,9 +13,12 @@ import Header from "@components/header/Header";
 //Styled Components
 import { Container } from "@styles/styled-components/layout/AppLayout";
 
+//Types
+import { Hydrated } from "@typescriptTypes/MiscTypes";
+
 const inter = Inter({ subsets: ["latin"] });
 
-const AppLayout = ({ children }: ChildrenProps) => {
+const AppLayout = ({ children }: ChildrenProps, isHydrated: Hydrated) => {
 	return (
 		<Container className={`${inter.className}`}>
 			<WorkoutProvider>

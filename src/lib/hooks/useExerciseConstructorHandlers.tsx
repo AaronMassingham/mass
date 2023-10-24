@@ -1,10 +1,10 @@
-// hooks/useWorkoutHandlers.js
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { Exercise, Workout } from "@typescriptTypes/WorkoutTypes";
 import { calculateVolume } from "@helpers/calculationHelpers";
+
 //Context
 import { useWorkoutContext } from "@contexts/WorkoutContext";
-import { useRouter } from "next/router";
 
 export function useExerciseConstructorHandlers() {
 	const router = useRouter();
@@ -34,7 +34,12 @@ export function useExerciseConstructorHandlers() {
 			],
 		}));
 		router.push("/workout");
-		localStorage.setItem("current-workout", JSON.stringify(workoutState));
+		try {
+			localStorage.setItem("current-workout", JSON.stringify(workoutState));
+			console.log(localStorage);
+		} catch (error) {
+			console.error("Error saving workout to local storage:", error);
+		}
 	};
 
 	const clearExerciseName = () => {
