@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom";
+import { ReactNode } from "react";
 
-export function createPortal(content: React.ReactNode) {
+export function createPortal(content: ReactNode) {
 	if (typeof window === "object") {
 		const modalContainer = document.getElementById("modal-container");
 
